@@ -2,203 +2,379 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GLAM LAB | Tu mundo de belleza</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fff8f8;
-      color: #34252d;
-    }
-    header {
-      background: #f2dce4;
-      padding: 22px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-    .logo { font-size: 25px; font-weight: 900; letter-spacing: 2px; }
-    nav a {
-      color: #34252d;
-      text-decoration: none;
-      margin: 0 8px;
-      font-size: 14px;
-    }
-    .hero {
-      padding: 70px 8%;
-      background: linear-gradient(120deg, #f2dce4, #fff8f8, #ead8f2);
-      text-align: center;
-    }
-    .tag {
-      letter-spacing: 3px;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-    h1 { font-size: clamp(42px, 8vw, 78px); margin: 20px 0; }
-    h1 span { color: #a54e73; }
-    .hero p { max-width: 550px; margin: 0 auto 25px; line-height: 1.7; }
-    button {
-      background: #9b486d;
-      color: white;
-      border: 0;
-      border-radius: 25px;
-      padding: 13px 22px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    section { padding: 50px 8%; }
-    .eyebrow { color: #a54e73; letter-spacing: 2px; font-size: 12px; }
-    h2 { font-size: 30px; margin-top: 8px; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 18px;
-    }
-    .card {
-      background: white;
-      padding: 24px;
-      border: 1px solid #f0dfe6;
-      border-radius: 18px;
-    }
-    .emoji { font-size: 34px; }
-    .card p, .small { line-height: 1.6; color: #725f68; }
-    .quiz { background: #f7e8ee; border-radius: 22px; padding: 25px; }
-    .options { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
-    .options button { background: white; color: #713650; border: 1px solid #dfb8c8; }
-    .options button:hover { background: #ead0dc; }
-    #result, #tip { font-weight: bold; margin-top: 16px; line-height: 1.6; }
-    footer { background: #34252d; color: white; padding: 28px 8%; text-align: center; }
-    @media (max-width: 550px) {
-      header { padding: 20px 5%; }
-      nav { line-height: 2.2; }
-      section { padding: 38px 6%; }
-      .hero { padding: 55px 6%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLAM LAB | Tu belleza, tus reglas</title>
+<style>
+:root {
+  --pink: #f3a8c4;
+  --light: #fff4f8;
+  --dark: #34242e;
+  --purple: #a38bc4;
+  --white: #ffffff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--light);
+  color: var(--dark);
+}
+header {
+  background: rgba(255,255,255,.95);
+  padding: 17px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #f5dce7;
+}
+.logo { font-size: 25px; font-weight: 900; letter-spacing: 2px; }
+.logo span { color: #d65f91; }
+nav { display: flex; flex-wrap: wrap; gap: 15px; }
+nav a { text-decoration: none; color: var(--dark); font-size: 13px; }
+nav a:hover { color: #d65f91; }
+.hero {
+  padding: 75px 8%;
+  background: linear-gradient(135deg,#ffe2ed,#f8c4d8,#e9dafa);
+  text-align: center;
+}
+.eyebrow { text-transform: uppercase; letter-spacing: 3px; font-size: 11px; }
+.hero h1 { font-size: clamp(38px,7vw,72px); margin: 18px 0; line-height: 1.05; }
+.hero h1 span { color: #b34778; }
+.hero p { max-width: 550px; margin: 0 auto 25px; line-height: 1.7; }
+.btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 30px;
+  padding: 14px 23px;
+  background: var(--dark);
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn:hover { opacity: .85; transform: translateY(-1px); }
+.btn.pink { background: #d65f91; }
+section { padding: 65px 8%; scroll-margin-top: 25px; }
+.section-head { text-align: center; margin-bottom: 30px; }
+.section-head h2 { font-size: clamp(27px,4vw,39px); margin: 10px 0; }
+.section-head p { color: #796774; line-height: 1.6; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap: 18px; }
+.card {
+  background: white;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid #f1dce5;
+  box-shadow: 0 8px 25px #65304d0a;
+}
+.card .emoji { font-size: 34px; }
+.card h3 { margin-bottom: 9px; }
+.card p { color: #766571; font-size: 14px; line-height: 1.65; }
+.quiz-wrap {
+  max-width: 760px;
+  margin: auto;
+  background: white;
+  border-radius: 24px;
+  padding: clamp(20px,5vw,38px);
+  box-shadow: 0 10px 35px #65304d12;
+}
+.progress { height: 7px; background: #f5e3eb; border-radius: 9px; margin: 20px 0 28px; overflow: hidden; }
+.progress div { height: 100%; width: 0; background: #d65f91; transition: width .3s; }
+.question { margin: 25px 0; }
+.question h3 { font-size: 17px; }
+.option {
+  display: block;
+  border: 1px solid #ead8e1;
+  border-radius: 13px;
+  padding: 13px;
+  margin: 9px 0;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.option:has(input:checked) { border-color: #d65f91; background: #fff0f6; }
+.option input { accent-color: #d65f91; margin-right: 8px; }
+.result {
+  display: none;
+  background: #fff0f6;
+  border-radius: 18px;
+  padding: 25px;
+  margin-top: 25px;
+  text-align: center;
+}
+.result .emoji { font-size: 48px; }
+.result h3 { font-size: 25px; }
+.small { font-size: 12px; color: #806e79; line-height: 1.6; }
+.tip-box {
+  text-align: center;
+  background: linear-gradient(135deg,#f7d5e4,#e9dcf7);
+  border-radius: 24px;
+  padding: 38px 20px;
+}
+.tip-box p { max-width: 550px; margin: 20px auto; line-height: 1.7; }
+.tip-text { font-weight: bold; font-size: 17px; }
+.guide-step { border-left: 3px solid #e9a4c1; padding: 5px 0 5px 18px; margin: 20px 0; }
+.guide-step p { line-height: 1.6; color: #766571; }
+.myth {
+  text-align: center;
+  max-width: 650px;
+  margin: auto;
+  background: white;
+  border-radius: 22px;
+  padding: 28px;
+}
+.feedback { min-height: 25px; font-weight: bold; margin-top: 18px; }
+footer { background: #34242e; color: white; padding: 35px 8%; text-align: center; }
+footer p { color: #e8d7e0; font-size: 13px; line-height: 1.7; }
+@media(max-width:600px) {
+  header { justify-content: center; }
+  nav { justify-content: center; }
+  .hero { padding: 55px 6%; }
+  section { padding: 48px 6%; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo">GLAM LAB ✳</div>
-    <nav>
-      <a href="#explora">Explora</a>
-      <a href="#quiz">Tu estilo</a>
-      <a href="#mitos">Mitos</a>
-    </nav>
-  </header>
 
-  <main>
-    <div class="hero">
-      <div class="tag">BEAUTY · CREATIVITY · YOU</div>
-      <h1>Tu belleza.<br><span>Tus reglas.</span></h1>
-      <p>Un espacio para descubrir el maquillaje, experimentar con estilos y aprender pequeños trucos. Aquí no hay reglas: ¡hay formas de expresarte!</p>
-      <button onclick="document.querySelector('#quiz').scrollIntoView({behavior:'smooth'})">DESCUBRE TU GLAM ↗</button>
+<header>
+  <div class="logo">GLAM <span>LAB.</span></div>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#estilos">Estilos</a>
+    <a href="#test">Tu estilo</a>
+    <a href="#guia">Guía</a>
+    <a href="#tips">Tips</a>
+    <a href="#mitos">Mitos</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero" id="inicio">
+    <div class="eyebrow">Tu espacio de belleza ♡</div>
+    <h1>Tu belleza.<br><span>Tus reglas.</span></h1>
+    <p>Descubre estilos, aprende técnicas y encuentra inspiración para experimentar con el maquillaje a tu manera.</p>
+    <a class="btn pink" href="#test">Descubre tu estilo ✨</a>
+  </div>
+
+  <section id="estilos">
+    <div class="section-head">
+      <div class="eyebrow">Encuentra inspiración</div>
+      <h2>¿Qué look te inspira?</h2>
+      <p>Cuatro estilos diferentes para explorar y adaptar a tus gustos.</p>
     </div>
+    <div class="grid">
+      <article class="card">
+        <div class="emoji">🌸</div>
+        <h3>Soft Glam</h3>
+        <p>Sombras difuminadas, rubor suave y labios definidos. Un look elegante con un acabado delicado.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">🖤</div>
+        <h3>Grunge</h3>
+        <p>Sombras oscuras, delineado difuminado y tonos intensos para una apariencia alternativa.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">☁️</div>
+        <h3>Clean Look</h3>
+        <p>Piel con acabado natural, cejas peinadas y labios hidratados. Menos pasos, si así lo prefieres.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">💋</div>
+        <h3>Classic Glam</h3>
+        <p>Delineado definido, labios protagonistas y sombras elegantes para un look atemporal.</p>
+      </article>
+    </div>
+  </section>
 
-    <section id="explora">
-      <div class="eyebrow">01 — BEAUTY SCHOOL</div>
-      <h2>Tu kit de conocimientos</h2>
-      <p class="small">Conoce algunos productos y para qué sirven.</p>
-      <div class="cards">
-        <article class="card">
-          <div class="emoji">🫧</div>
-          <h3>Primer</h3>
-          <p>Se aplica antes del maquillaje. Algunas fórmulas ayudan a que la base se distribuya mejor o a controlar el brillo.</p>
-        </article>
-        <article class="card">
-          <div class="emoji">🪞</div>
-          <h3>Corrector</h3>
-          <p>Sirve para cubrir pequeñas zonas o igualar el tono donde tú quieras. Puedes usarlo solo o con base.</p>
-        </article>
-        <article class="card">
-          <div class="emoji">🌷</div>
-          <h3>Rubor</h3>
-          <p>Añade color a las mejillas. Existe en crema, líquido y polvo para conseguir distintos acabados.</p>
-        </article>
-        <article class="card">
-          <div class="emoji">✨</div>
-          <h3>Iluminador</h3>
-          <p>Aporta un efecto luminoso en las zonas donde lo aplicas. Puede tener brillo sutil o más intenso.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="quiz">
-      <div class="eyebrow">02 — FIND YOUR VIBE</div>
-      <h2>¿Cuál es tu estilo glam?</h2>
-      <div class="quiz">
-        <p>Elige el ambiente que más te gusta y descubre una inspiración.</p>
-        <div class="options">
-          <button onclick="styleResult('soft')">🌸 Suave y rosado</button>
-          <button onclick="styleResult('grunge')">🖤 Oscuro y atrevido</button>
-          <button onclick="styleResult('clean')">🤍 Fresco y natural</button>
-          <button onclick="styleResult('glam')">💋 Brillante y elegante</button>
+  <section id="test" style="background:#fce6ef">
+    <div class="section-head">
+      <div class="eyebrow">Tu momento de brillar</div>
+      <h2>Encuentra tu estilo</h2>
+      <p>Contesta estas tres preguntas y descubre qué look podría gustarte.</p>
+    </div>
+    <div class="quiz-wrap">
+      <div><strong id="progress-label">0 de 3 preguntas</strong></div>
+      <div class="progress"><div id="progress-bar"></div></div>
+      <form id="style-quiz">
+        <div class="question">
+          <h3>1. ¿Qué acabado te llama más la atención?</h3>
+          <label class="option"><input type="radio" name="q1" value="soft"> ✨ Suave, difuminado y luminoso</label>
+          <label class="option"><input type="radio" name="q1" value="grunge"> 🖤 Oscuro, intenso y alternativo</label>
+          <label class="option"><input type="radio" name="q1" value="clean"> ☁️ Natural, fresco y sencillo</label>
+          <label class="option"><input type="radio" name="q1" value="classic"> 💋 Definido, elegante y clásico</label>
         </div>
-        <div id="result" aria-live="polite">Tu resultado aparecerá aquí…</div>
-      </div>
-    </section>
-
-    <section id="mitos">
-      <div class="eyebrow">03 — MYTH CHECK</div>
-      <h2>¿Mito o realidad?</h2>
-      <div class="quiz">
-        <p><strong>“Todas las personas necesitan usar base para maquillarse”.</strong></p>
-        <div class="options">
-          <button onclick="myth(false)">Mito</button>
-          <button onclick="myth(true)">Realidad</button>
+        <div class="question">
+          <h3>2. ¿Qué producto elegirías primero?</h3>
+          <label class="option"><input type="radio" name="q2" value="soft"> Rubor y brillo de labios</label>
+          <label class="option"><input type="radio" name="q2" value="grunge"> Sombra oscura y lápiz negro</label>
+          <label class="option"><input type="radio" name="q2" value="clean"> Bálsamo labial y gel para cejas</label>
+          <label class="option"><input type="radio" name="q2" value="classic"> Delineador y labial intenso</label>
         </div>
-        <div id="mythResult" aria-live="polite"></div>
-      </div>
-    </section>
+        <div class="question">
+          <h3>3. ¿Cómo te gustaría que se sintiera tu maquillaje?</h3>
+          <label class="option"><input type="radio" name="q3" value="soft"> Romántico y delicado</label>
+          <label class="option"><input type="radio" name="q3" value="grunge"> Atrevido y diferente</label>
+          <label class="option"><input type="radio" name="q3" value="clean"> Cómodo y natural</label>
+          <label class="option"><input type="radio" name="q3" value="classic"> Sofisticado y glamuroso</label>
+        </div>
+        <button class="btn pink" type="submit">Descubrir mi resultado ♡</button>
+        <button class="btn" type="reset" id="reset-quiz" style="margin-left:6px">Volver a empezar</button>
+      </form>
+      <div class="result" id="style-result" aria-live="polite"></div>
+      <p class="small">Este test es solo una actividad de inspiración: puedes usar cualquier estilo que te guste, sin reglas.</p>
+    </div>
+  </section>
 
-    <section>
-      <div class="eyebrow">04 — SECRET NOTES</div>
-      <h2>Un tip para ti ✨</h2>
-      <p class="small">Pulsa para descubrir un consejo sorpresa.</p>
-      <button onclick="secretTip()">REVELAR TIP ✧</button>
-      <div id="tip" aria-live="polite"></div>
-    </section>
-  </main>
+  <section id="guia">
+    <div class="section-head">
+      <div class="eyebrow">Pequeños pasos, grandes looks</div>
+      <h2>Tu guía básica de maquillaje</h2>
+      <p>No necesitas todos los productos del mundo para empezar.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="emoji">🫧</div>
+        <h3>01. Prepara tu piel</h3>
+        <p>Limpia tu rostro con suavidad y usa una crema hidratante adecuada para tu piel. De día, termina con protector solar.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">🪞</div>
+        <h3>02. Unifica si quieres</h3>
+        <p>Puedes usar corrector o base si te apetece. También está bien dejar la piel sin cubrir.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">🎨</div>
+        <h3>03. Añade color</h3>
+        <p>Prueba sombras, rubor o iluminador poco a poco. Difuminar suavemente ayuda a integrar los tonos.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">💗</div>
+        <h3>04. Termina a tu gusto</h3>
+        <p>Agrega máscara de pestañas o un producto para labios si quieres. No hay una única forma correcta.</p>
+      </article>
+    </div>
+  </section>
 
-  <footer>
-    <div class="logo">GLAM LAB ✳</div>
-    <p>Aprende · Experimenta · Exprésate</p>
-    <small>Proyecto educativo de cultura digital</small>
-  </footer>
+  <section id="tips">
+    <div class="tip-box">
+      <div class="eyebrow">Un secreto de GLAM LAB</div>
+      <h2>Tu dosis de tips ✨</h2>
+      <p id="tip-text" class="tip-text">Presiona el botón para descubrir un consejo de maquillaje.</p>
+      <button class="btn pink" id="tip-button">Revelar un tip 💌</button>
+    </div>
+  </section>
 
-  <script>
-    function styleResult(style) {
-      const results = {
-        soft: "🌸 SOFT GLAM: prueba tonos rosados, rubor suave y labios brillantes.",
-        grunge: "🖤 GRUNGE: inspírate en sombras difuminadas, tonos oscuros y delineados creativos.",
-        clean: "🤍 CLEAN LOOK: prueba un acabado fresco, cejas peinadas y labios hidratados.",
-        glam: "💋 CLASSIC GLAM: explora delineados definidos, sombras luminosas y labios intensos."
-      };
-      document.getElementById("result").textContent = results[style];
-    }
+  <section id="mitos" style="background:#fce6ef">
+    <div class="section-head">
+      <div class="eyebrow">¿Mito o realidad?</div>
+      <h2>Pon a prueba lo que sabes</h2>
+      <p>Aprender belleza también significa cuestionar los consejos que vemos en internet.</p>
+    </div>
+    <div class="myth">
+      <div class="emoji">🧠</div>
+      <h3>¿Es obligatorio usar base para que un maquillaje se vea bien?</h3>
+      <button class="btn pink" id="myth-true">Sí, es obligatoria</button>
+      <button class="btn" id="myth-false" style="margin:6px">No, es opcional</button>
+      <div id="myth-feedback" class="feedback" aria-live="polite"></div>
+      <p class="small">Pregunta 1 · Cultura de maquillaje</p>
+    </div>
+  </section>
+</main>
 
-    function myth(answer) {
-      const box = document.getElementById("mythResult");
-      box.textContent = answer
-        ? "No exactamente. ¡Es un mito! La base es opcional: puedes maquillarte con los productos que prefieras."
-        : "¡Correcto! Es un mito. La base es opcional y no es necesaria para disfrutar del maquillaje.";
-    }
+<footer>
+  <div class="logo">GLAM <span>LAB.</span></div>
+  <p>Explora, aprende y crea tu propio estilo.<br>La belleza no tiene reglas únicas. ♡</p>
+  <p>Proyecto educativo de Cultura Digital.</p>
+</footer>
 
-    function secretTip() {
-      const tips = [
-        "Limpia tus brochas con regularidad y déjalas secar completamente.",
-        "Prueba los productos nuevos en una zona pequeña para comprobar si te irritan.",
-        "Puedes aplicar el rubor poco a poco y añadir más si lo deseas.",
-        "No compartas productos para ojos o labios que tengan contacto directo con la piel.",
-        "Revisa la fecha de caducidad y las indicaciones de tus cosméticos."
-      ];
-      document.getElementById("tip").textContent =
-        "✧ " + tips[Math.floor(Math.random() * tips.length)];
-    }
-  </script>
+<script>
+const styleNames = {
+  soft: {
+    name: "Soft Glam", emoji: "🌸",
+    description: "Tu resultado es Soft Glam: prueba sombras cálidas y difuminadas, un toque de rubor y un labial que te guste.",
+    extra: "Tip: aplica poco producto al principio y agrega más solo si lo deseas."
+  },
+  grunge: {
+    name: "Grunge", emoji: "🖤",
+    description: "Tu resultado es Grunge: puedes experimentar con sombras oscuras, lápiz difuminado y tonos profundos.",
+    extra: "Tip: difumina los bordes de las sombras para conseguir un acabado más integrado."
+  },
+  clean: {
+    name: "Clean Look", emoji: "☁️",
+    description: "Tu resultado es Clean Look: prueba una rutina sencilla con piel hidratada, cejas peinadas y labios naturales.",
+    extra: "Tip: una buena hidratación puede ayudar a que el maquillaje se aplique de forma uniforme."
+  },
+  classic: {
+    name: "Classic Glam", emoji: "💋",
+    description: "Tu resultado es Classic Glam: puedes explorar un delineado definido, sombras elegantes y labios protagonistas.",
+    extra: "Tip: practica primero el delineado con trazos pequeños y sin apresurarte."
+  }
+};
+
+const form = document.getElementById("style-quiz");
+const result = document.getElementById("style-result");
+const progressBar = document.getElementById("progress-bar");
+const progressLabel = document.getElementById("progress-label");
+
+function updateProgress() {
+  let answered = 0;
+  for (let i = 1; i <= 3; i++) {
+    if (form.querySelector('input[name="q' + i + '"]:checked')) answered++;
+  }
+  progressLabel.textContent = answered + " de 3 preguntas";
+  progressBar.style.width = (answered / 3 * 100) + "%";
+}
+form.addEventListener("change", updateProgress);
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  const data = new FormData(form);
+  if (!data.get("q1") || !data.get("q2") || !data.get("q3")) {
+    result.style.display = "block";
+    result.innerHTML = "<h3>¡Te falta poquito! 💗</h3><p>Contesta las tres preguntas para descubrir tu resultado.</p>";
+    return;
+  }
+  const scores = {soft:0, grunge:0, clean:0, classic:0};
+  for (let i = 1; i <= 3; i++) scores[data.get("q" + i)]++;
+  const winner = Object.keys(scores).sort((a,b) => scores[b] - scores[a])[0];
+  const style = styleNames[winner];
+  result.style.display = "block";
+  result.innerHTML = '<div class="emoji">' + style.emoji + '</div><h3>¡Tu estilo es ' + style.name + '!</h3><p>' + style.description + '</p><p><strong>' + style.extra + '</strong></p><p>¡Puedes mezclar estilos y crear el tuyo propio!</p>';
+  result.scrollIntoView({behavior:"smooth", block:"center"});
+});
+
+document.getElementById("reset-quiz").addEventListener("click", function() {
+  result.style.display = "none";
+  result.innerHTML = "";
+  updateProgress();
+});
+
+const tips = [
+  "Limpia tus brochas con regularidad y deja que se sequen completamente.",
+  "Para difuminar sombras, usa movimientos suaves y añade color poco a poco.",
+  "Puedes aplicar el rubor en pequeñas cantidades y ajustar la intensidad después.",
+  "No compartas máscara de pestañas ni productos que entren en contacto con los ojos.",
+  "Revisa la fecha de caducidad y deja de usar un producto si te causa irritación.",
+  "No necesitas comprar todos los productos virales: elige los que realmente te interesen.",
+  "Prueba los colores con la luz que tendrás durante el día para ver cómo se ven."
+];
+let lastTip = -1;
+document.getElementById("tip-button").addEventListener("click", function() {
+  let index;
+  do { index = Math.floor(Math.random() * tips.length); }
+  while (tips.length > 1 && index === lastTip);
+  lastTip = index;
+  document.getElementById("tip-text").textContent = tips[index];
+});
+
+document.getElementById("myth-true").addEventListener("click", function() {
+  document.getElementById("myth-feedback").textContent = "¡No exactamente! 💗 La base es opcional.";
+});
+document.getElementById("myth-false").addEventListener("click", function() {
+  document.getElementById("myth-feedback").textContent = "¡Correcto! ✨ Puedes crear un look con o sin base.";
+});
+</script>
 </body>
 </html>
