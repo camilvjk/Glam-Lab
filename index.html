@@ -4,784 +4,886 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GLAM LAB: descubre tu estilo de maquillaje, aprende trucos y encuentra inspiración para crear tus looks.">
 <title>GLAM LAB | Beauty Playground</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
 <style>
-:root {
-  --pink:#e987ae;
-  --deep:#ad416f;
-  --pale:#fff3f8;
-  --purple:#a797cb;
-  --ink:#392632;
-  --muted:#806c79;
+:root{
+  --pink:#f4cbd5;
+  --rose:#b96e80;
+  --deep:#673c49;
+  --cream:#fff9f6;
+  --lav:#eee5f4;
+  --ink:#493840;
   --white:#fff;
+  --soft:#f9e9ed;
+  --line:#efdce1;
+  --shadow:0 10px 30px #673c4912;
 }
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--pale);
+  background:var(--cream);
   color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+  line-height:1.6;
 }
-button,input,textarea { font:inherit; }
-button,a { -webkit-tap-highlight-color:transparent; }
-header {
-  position:sticky;
-  top:0;
-  z-index:10;
-  background:#fffafdeF;
-  backdrop-filter:blur(12px);
-  padding:15px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:15px;
-  border-bottom:1px solid #f1dce6;
+body.dark{
+  --cream:#211b24;
+  --ink:#fff1f5;
+  --white:#302632;
+  --soft:#40303e;
+  --line:#5b4354;
+  --lav:#49374e;
+  --pink:#714956;
+  --deep:#f5c9d6;
+  --shadow:0 10px 30px #0003;
 }
-.logo { font-weight:900; font-size:23px; letter-spacing:2px; }
-.logo span { color:var(--deep); }
-nav { display:flex; gap:13px; flex-wrap:wrap; }
-nav a {
-  font-size:12px;
-  text-decoration:none;
-  color:var(--ink);
+h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.2}
+h2{font-size:clamp(2rem,4vw,3rem);margin:0 0 12px}
+h3{margin-top:0}
+p{margin-top:0}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:3px solid var(--rose);outline-offset:3px
 }
-nav a:hover { color:var(--deep); }
-.hero {
-  text-align:center;
-  padding:80px 7%;
-  background:
-    radial-gradient(ellipse at 15% 20%,#ffffffa6,transparent 32%),
-    radial-gradient(ellipse at 85% 80%,#d9c9f5,transparent 32%),
-    linear-gradient(130deg,#ffe0ec,#f7bfd7,#f9e9f1);
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.container{width:min(1120px,92%);margin:auto}
+section{padding:76px 0;scroll-margin-top:90px}
+.section-head{text-align:center;max-width:680px;margin:0 auto 36px}
+.section-head p{opacity:.8}
+.eyebrow{
+  color:var(--rose);font-size:.76rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase
 }
-.eyebrow {
-  font-size:11px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:var(--deep);
-  font-weight:bold;
+.small{font-size:.88rem;opacity:.8}
+.btn{
+  border:1px solid var(--rose);background:var(--rose);color:white;
+  border-radius:30px;padding:12px 22px;font-weight:700;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  transition:.2s
 }
-.hero h1 {
-  font-size:clamp(43px,8vw,83px);
-  line-height:1;
-  margin:22px 0;
+.btn:hover{transform:translateY(-2px);filter:brightness(.96)}
+.btn-outline{background:transparent;color:var(--deep)}
+body.dark .btn-outline{color:var(--ink)}
+.btn-light{background:var(--white);color:var(--deep);border-color:var(--line)}
+.btn-small{padding:8px 15px;font-size:.86rem}
+button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+header{
+  position:sticky;top:0;z-index:50;background:var(--cream);
+  border-bottom:1px solid var(--line);backdrop-filter:blur(14px)
 }
-.hero h1 span { color:var(--deep); }
-.hero p {
-  max-width:580px;
-  margin:0 auto 28px;
-  line-height:1.8;
-  color:#634c5a;
+.nav{
+  min-height:74px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px
 }
-.btn {
-  display:inline-block;
-  border:0;
-  border-radius:30px;
-  padding:13px 20px;
-  background:var(--ink);
-  color:white;
-  cursor:pointer;
-  text-decoration:none;
-  font-size:13px;
-  transition:transform .2s,opacity .2s;
+.logo{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:700;letter-spacing:2px}
+.logo span{color:var(--rose)}
+.nav-links{display:flex;align-items:center;gap:19px;flex-wrap:wrap;font-size:.87rem}
+.nav-links a:hover{color:var(--rose)}
+.nav-actions{display:flex;gap:8px}
+.icon-btn{
+  background:var(--white);border:1px solid var(--line);border-radius:50%;
+  width:42px;height:42px;color:var(--ink);font-size:1.1rem
 }
-.btn:hover { transform:translateY(-2px); opacity:.88; }
-.btn.pink { background:var(--deep); }
-.btn.light { background:#f9e3ed; color:var(--ink); }
-section { padding:65px 7%; scroll-margin-top:80px; }
-.section-head { text-align:center; margin:0 auto 32px; max-width:650px; }
-.section-head h2 { font-size:clamp(27px,4vw,40px); margin:12px 0; }
-.section-head p { color:var(--muted); line-height:1.7; font-size:14px; }
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(205px,1fr));
-  gap:17px;
+.menu-btn{display:none}
+.hero{padding:42px 0 75px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(3rem,6vw,5.3rem);margin:15px 0 20px}
+.hero h1 em{color:var(--rose);font-weight:500}
+.hero-copy{font-size:1.05rem;max-width:490px;opacity:.85}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin:27px 0}
+.hero-note{font-size:.83rem;opacity:.75}
+.hero-image{position:relative}
+.hero-image img{width:100%;height:490px;object-fit:cover;border-radius:180px 180px 25px 25px}
+.floating-note{
+  position:absolute;bottom:24px;left:-24px;background:var(--white);
+  padding:16px 20px;border-radius:16px;box-shadow:var(--shadow);
+  max-width:220px;font-size:.87rem
 }
-.card {
-  background:white;
-  border:1px solid #f0dce6;
-  border-radius:20px;
-  padding:23px;
-  box-shadow:0 8px 25px #55223b08;
+.floating-note strong{display:block;color:var(--rose);font-size:1rem}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.pill{padding:7px 13px;border-radius:30px;background:var(--soft);font-size:.8rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.stat{padding:14px;border-left:2px solid var(--pink)}
+.stat strong{display:block;font-family:'Playfair Display',serif;font-size:1.5rem}
+.stat span{font-size:.78rem;opacity:.75}
+.soft-section{background:var(--soft)}
+.style-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.style-card{
+  background:var(--white);border:1px solid var(--line);border-radius:19px;
+  overflow:hidden;box-shadow:var(--shadow);transition:transform .2s
 }
-.card h3 { margin:12px 0 8px; }
-.card p { font-size:13px; line-height:1.75; color:var(--muted); }
-.emoji { font-size:35px; }
-.tag {
-  display:inline-block;
-  background:#fbe5ee;
-  color:#9b4168;
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:10px;
-  margin:3px 2px 0 0;
+.style-card:hover{transform:translateY(-5px)}
+.style-card img{width:100%;height:235px;object-fit:cover}
+.style-card-body{padding:20px}
+.style-card h3{font-size:1.45rem;margin:6px 0}
+.style-card p{font-size:.9rem;opacity:.82}
+.tag{display:inline-block;font-size:.72rem;background:var(--lav);padding:5px 10px;border-radius:20px}
+.card-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:18px}
+.card-bottom .btn{padding:9px 14px;font-size:.82rem}
+.text-btn{background:none;border:0;color:var(--rose);font-weight:700;padding:8px}
+.style-detail{
+  display:none;margin-top:25px;background:var(--white);
+  border:1px solid var(--line);border-radius:18px;padding:25px
 }
-.soft-section { background:#fbe4ee; }
-.dark-section { background:#392632; color:white; }
-.dark-section .section-head p { color:#e6d5df; }
-.panel {
-  max-width:850px;
-  margin:auto;
-  background:white;
-  color:var(--ink);
-  padding:clamp(20px,4vw,36px);
-  border-radius:24px;
-  box-shadow:0 12px 35px #55223b0c;
+.style-detail.active{display:block}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.detail-grid img{width:100%;height:300px;object-fit:cover;border-radius:14px}
+.detail-grid li{margin-bottom:8px}
+.quiz-wrap{
+  max-width:780px;margin:auto;background:var(--white);padding:clamp(20px,5vw,42px);
+  border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)
 }
-.quiz-question { margin:25px 0; }
-.quiz-question h3 { font-size:16px; line-height:1.5; }
-.option {
-  display:block;
-  padding:13px;
-  margin:9px 0;
-  border:1px solid #ead8e2;
-  border-radius:13px;
-  cursor:pointer;
-  line-height:1.5;
-  font-size:14px;
+.quiz-top{display:flex;justify-content:space-between;gap:12px;font-size:.86rem;margin-bottom:12px}
+.progress{height:8px;background:var(--soft);border-radius:20px;overflow:hidden;margin-bottom:30px}
+.progress-fill{height:100%;width:0;background:var(--rose);transition:width .3s}
+.quiz-question{font-family:'Playfair Display',serif;font-size:1.65rem;margin-bottom:20px}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.quiz-option{
+  padding:17px;text-align:left;background:var(--cream);color:var(--ink);
+  border:1px solid var(--line);border-radius:14px;transition:.2s
 }
-.option:has(input:checked) {
-  background:#fff0f6;
-  border-color:var(--pink);
+.quiz-option:hover,.quiz-option.selected{border-color:var(--rose);background:var(--soft)}
+.quiz-option strong{display:block;margin-bottom:4px}
+.quiz-option span{font-size:.84rem;opacity:.8}
+.quiz-controls{display:flex;justify-content:space-between;gap:12px;margin-top:26px}
+.quiz-result{display:none}
+.quiz-result.active{display:block}
+.result-image{width:100%;height:260px;object-fit:cover;border-radius:18px;margin:20px 0}
+.result-extra{background:var(--soft);border-radius:15px;padding:20px;margin:18px 0}
+.result-extra li{margin-bottom:7px}
+.result-actions{display:flex;flex-wrap:wrap;gap:10px}
+.tip-layout{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.tip-visual img{width:100%;height:370px;object-fit:cover;border-radius:22px}
+.tip-box{padding:30px;background:var(--white);border:1px solid var(--line);border-radius:22px}
+.tip-number{font-family:'Playfair Display',serif;color:var(--rose);font-size:3rem}
+.tip-box h3{font-size:1.7rem}
+.tip-text{min-height:90px}
+.generator{
+  background:linear-gradient(135deg,var(--soft),var(--lav));
+  border-radius:24px;padding:35px;text-align:center
 }
-.option input { accent-color:var(--deep); margin-right:8px; }
-.feedback { min-height:24px; margin:15px 0; line-height:1.6; font-size:14px; }
-.progress {
-  height:7px;
-  border-radius:10px;
-  background:#f2e3eb;
-  overflow:hidden;
-  margin:15px 0;
+.generator h3{font-size:1.8rem}
+.idea-display{min-height:90px;max-width:650px;margin:20px auto;font-size:1.15rem}
+.generator-controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.idea-chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:15px 0}
+.myth-box{max-width:760px;margin:auto;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:30px}
+.myth-counter{font-size:.83rem;color:var(--rose);font-weight:700}
+.myth-question{font-family:'Playfair Display',serif;font-size:1.6rem;margin:15px 0 22px}
+.myth-options{display:flex;gap:12px;flex-wrap:wrap}
+.myth-feedback{margin-top:20px;padding:16px;border-radius:12px;background:var(--soft)}
+.myth-score{text-align:center;margin-top:15px;font-weight:700}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.tool-card{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:25px;box-shadow:var(--shadow)}
+.tool-card h3{font-size:1.5rem}
+.palette{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}
+.swatch{width:70px;height:90px;border:1px solid #0001;border-radius:12px;cursor:pointer;position:relative}
+.swatch span{position:absolute;bottom:5px;left:0;right:0;text-align:center;font-size:.66rem;color:#493840;background:#ffffffc9;padding:2px}
+.form-row{display:flex;gap:8px;margin:12px 0}
+.field{
+  width:100%;padding:12px 14px;background:var(--cream);color:var(--ink);
+  border:1px solid var(--line);border-radius:12px
 }
-.progress div {
-  height:100%;
-  width:0;
-  background:var(--deep);
-  transition:width .3s;
+textarea.field{resize:vertical;min-height:100px}
+.favorite-list{display:grid;gap:10px;margin-top:15px}
+.favorite-item{padding:13px;border:1px solid var(--line);border-radius:12px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.favorite-item button{flex-shrink:0}
+.empty{font-size:.9rem;opacity:.7;padding:15px 0}
+.challenge{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:28px;text-align:center}
+.challenge-icon{font-size:2.5rem}
+.challenge p{max-width:550px;margin:12px auto 20px}
+.challenge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:25px}
+.challenge-item{background:var(--soft);padding:18px;border-radius:15px}
+.challenge-item strong{display:block;font-size:1.1rem;margin-bottom:7px}
+footer{background:var(--deep);color:white;padding:40px 0;text-align:center}
+footer .logo{font-size:1.8rem}
+footer p{font-size:.85rem;opacity:.8;margin:10px 0}
+.footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:18px;font-size:.85rem}
+.toast{
+  position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);
+  background:var(--deep);color:white;padding:12px 20px;border-radius:30px;
+  opacity:0;pointer-events:none;transition:.25s;z-index:100;max-width:90%;
+  text-align:center
 }
-.tip-box {
-  max-width:780px;
-  margin:auto;
-  text-align:center;
-  padding:40px 22px;
-  border-radius:25px;
-  background:linear-gradient(130deg,#f8d5e4,#e8ddf8);
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.back-top{
+  position:fixed;bottom:22px;right:18px;z-index:30;width:44px;height:44px;
+  border:0;border-radius:50%;background:var(--rose);color:white;font-size:1.2rem;
+  box-shadow:var(--shadow)
 }
-.tip-box h2 { font-size:32px; }
-.tip-box p { line-height:1.8; }
-.tip-text { font-size:17px; font-weight:bold; }
-.idea-box {
-  background:white;
-  border-radius:22px;
-  padding:25px;
-  text-align:center;
-  border:1px solid #f0dce6;
+@media(max-width:850px){
+ .nav-links{gap:10px;font-size:.8rem}
+ .hero-grid{gap:25px}
+ .hero-image img{height:400px}
+ .style-grid{grid-template-columns:repeat(2,1fr)}
 }
-.idea-result {
-  min-height:90px;
-  margin:22px 0;
-  line-height:1.8;
-}
-.favorite-button {
-  border:1px solid #e8bfd1;
-  background:#fff2f7;
-  color:var(--deep);
-  border-radius:20px;
-  padding:9px 12px;
-  cursor:pointer;
-  font-size:12px;
-}
-.favorite-button.saved { background:var(--deep); color:white; }
-.moodboard {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:12px;
-}
-.mood {
-  border-radius:18px;
-  padding:20px;
-  background:white;
-  border:1px solid #efd9e4;
-}
-.mood h3 { margin:8px 0; }
-.mood p { color:var(--muted); font-size:13px; line-height:1.65; }
-textarea {
-  width:100%;
-  border:1px solid #e8cedb;
-  border-radius:14px;
-  padding:14px;
-  min-height:120px;
-  resize:vertical;
-  background:#fffafd;
-  color:var(--ink);
-}
-.note-status { font-size:12px; color:var(--muted); min-height:18px; }
-.small { font-size:12px; line-height:1.7; color:var(--muted); }
-footer {
-  text-align:center;
-  padding:35px 7%;
-  background:var(--ink);
-  color:white;
-}
-footer p { font-size:12px; line-height:1.8; color:#e9d9e2; }
-@media(max-width:650px) {
-  header { justify-content:center; }
-  nav { justify-content:center; }
-  .hero { padding:60px 6%; }
-  section { padding:48px 6%; }
+@media(max-width:650px){
+ section{padding:55px 0}
+ .nav{min-height:65px;flex-wrap:wrap}
+ .menu-btn{display:inline-block}
+ .nav-links{display:none;flex-basis:100%;padding:0 0 15px}
+ .nav-links.open{display:flex}
+ .hero{padding-top:25px}
+ .hero-grid,.tip-layout,.tool-grid,.detail-grid{grid-template-columns:1fr}
+ .hero-image{margin:10px 10px 0 25px}
+ .hero-image img{height:350px}
+ .floating-note{left:-20px}
+ .style-grid{grid-template-columns:1fr}
+ .style-card img{height:250px}
+ .quiz-options{grid-template-columns:1fr}
+ .quiz-question{font-size:1.4rem}
+ .stats{gap:5px}
+ .stat{padding:8px}
+ .stat strong{font-size:1.2rem}
+ .challenge-grid{grid-template-columns:1fr}
+ .tip-visual img{height:270px}
+ .myth-box{padding:22px}
+ .generator{padding:24px 17px}
+ .form-row{flex-direction:column}
 }
 </style>
 </head>
-<body>
 
+<body>
 <header>
-  <div class="logo">GLAM <span>LAB.</span></div>
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#estilos">Estilos</a>
-    <a href="#test">Mi estilo</a>
-    <a href="#inspiracion">Inspiración</a>
-    <a href="#tips">Tips</a>
-    <a href="#mitos">Mitos</a>
-  </nav>
+  <div class="container nav">
+    <a class="logo" href="#inicio" aria-label="GLAM LAB, inicio">GLAM<span> LAB</span></a>
+    <button class="icon-btn menu-btn" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#inicio" onclick="closeMenu()">Inicio</a>
+      <a href="#estilos" onclick="closeMenu()">Estilos</a>
+      <a href="#test" onclick="closeMenu()">Mi estilo</a>
+      <a href="#tips" onclick="closeMenu()">Tips</a>
+      <a href="#inspiracion" onclick="closeMenu()">Inspiración</a>
+      <a href="#mitos" onclick="closeMenu()">Mitos</a>
+      <a href="#mi-espacio" onclick="closeMenu()">Mi espacio</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Cambiar tema" aria-label="Cambiar tema">☾</button>
+    </div>
+  </div>
 </header>
 
 <main>
-  <section class="hero" id="inicio">
-    <div class="eyebrow">Tu espacio de belleza ♡</div>
-    <h1>Tu belleza.<br><span>Tus reglas.</span></h1>
-    <p>
-      Un pequeño universo para descubrir maquillajes, aprender técnicas,
-      guardar inspiración y experimentar con tu propio estilo.
-    </p>
-    <a class="btn pink" href="#test">Encuentra tu estilo ✨</a>
-    <a class="btn light" href="#inspiracion">Mi rincón ♡</a>
-  </section>
-
-  <section id="estilos">
-    <div class="section-head">
-      <div class="eyebrow">Beauty dictionary</div>
-      <h2>Explora los estilos</h2>
-      <p>Inspírate en diferentes tendencias y adapta cada una a tus gustos.
-      No tienes que elegir solo una.</p>
-    </div>
-
-    <div class="grid">
-      <article class="card">
-        <div class="emoji">🌸</div>
-        <h3>Soft Glam</h3>
-        <p>Sombras difuminadas, rubor y labios definidos. Un acabado elegante y suave.</p>
-        <span class="tag">Romántico</span><span class="tag">Luminoso</span>
-      </article>
-      <article class="card">
-        <div class="emoji">🖤</div>
-        <h3>Grunge</h3>
-        <p>Sombras oscuras, delineado difuminado y tonos profundos con inspiración alternativa.</p>
-        <span class="tag">Alternativo</span><span class="tag">Oscuro</span>
-      </article>
-      <article class="card">
-        <div class="emoji">☁️</div>
-        <h3>Clean Look</h3>
-        <p>Un maquillaje sencillo, cejas peinadas y labios hidratados. Puedes usar pocos productos.</p>
-        <span class="tag">Natural</span><span class="tag">Sencillo</span>
-      </article>
-      <article class="card">
-        <div class="emoji">💋</div>
-        <h3>Classic Glam</h3>
-        <p>Delineado definido, sombras elegantes y labios protagonistas.</p>
-        <span class="tag">Clásico</span><span class="tag">Elegante</span>
-      </article>
-      <article class="card">
-        <div class="emoji">🎀</div>
-        <h3>Coquette</h3>
-        <p>Rubor rosado, tonos pastel, labios brillantes y detalles delicados inspirados en moños y encaje.</p>
-        <span class="tag">Dulce</span><span class="tag">Rosa</span>
-      </article>
-      <article class="card">
-        <div class="emoji">🫧</div>
-        <h3>Douyin</h3>
-        <p>Inspirado en tendencias de belleza chinas: brillos estratégicos, sombras suaves y labios degradados.</p>
-        <span class="tag">Brillante</span><span class="tag">Creativo</span>
-      </article>
-      <article class="card">
-        <div class="emoji">☕</div>
-        <h3>Latte Makeup</h3>
-        <p>Sombras y tonos tierra, marrones cálidos y acabados bronceados. Puedes recrearlo con los colores que tengas.</p>
-        <span class="tag">Cálido</span><span class="tag">Tierra</span>
-      </article>
-      <article class="card">
-        <div class="emoji">🌙</div>
-        <h3>Siren Eyes</h3>
-        <p>Un estilo de ojos alargado visualmente mediante sombras y delineado. Se puede adaptar a distintas formas de ojos.</p>
-        <span class="tag">Definido</span><span class="tag">Intenso</span>
-      </article>
-      <article class="card">
-        <div class="emoji">🕸️</div>
-        <h3>E-girl</h3>
-        <p>Inspiración alternativa con delineados gráficos, rubor visible y pequeños detalles decorativos.</p>
-        <span class="tag">Creativo</span><span class="tag">Alternativo</span>
-      </article>
-      <article class="card">
-        <div class="emoji">🌅</div>
-        <h3>Sunset Makeup</h3>
-        <p>Combina naranjas, corales, rosas y dorados para recrear los colores de una puesta de sol.</p>
-        <span class="tag">Colorido</span><span class="tag">Cálido</span>
-      </article>
-      <article class="card">
-        <div class="emoji">🍇</div>
-        <h3>Monocromático</h3>
-        <p>Utiliza tonos de una misma familia en ojos, mejillas y labios para conseguir un look coordinado.</p>
-        <span class="tag">Coordinado</span><span class="tag">Versátil</span>
-      </article>
-      <article class="card">
-        <div class="emoji">🪩</div>
-        <h3>Y2K</h3>
-        <p>Brillos, tonos metálicos, sombras pastel y detalles inspirados en la estética de los años 2000.</p>
-        <span class="tag">Retro</span><span class="tag">Divertido</span>
-      </article>
-    </div>
-  </section>
-
-  <section class="soft-section" id="test">
-    <div class="section-head">
-      <div class="eyebrow">Tu beauty personality</div>
-      <h2>¿Qué estilo va contigo?</h2>
-      <p>Contesta estas preguntas y descubre qué estética coincide con tus preferencias.</p>
-    </div>
-    <div class="panel">
-      <div id="style-progress-label">0 de 4 preguntas respondidas</div>
-      <div class="progress"><div id="style-progress"></div></div>
-      <form id="style-quiz">
-        <div class="quiz-question">
-          <h3>1. ¿Qué acabado te gusta más?</h3>
-          <label class="option"><input type="radio" name="q1" value="soft"> Suave y luminoso</label>
-          <label class="option"><input type="radio" name="q1" value="grunge"> Oscuro e intenso</label>
-          <label class="option"><input type="radio" name="q1" value="clean"> Natural y sencillo</label>
-          <label class="option"><input type="radio" name="q1" value="douyin"> Brillante y delicado</label>
-          <label class="option"><input type="radio" name="q1" value="latte"> Cálido y en tonos tierra</label>
-        </div>
-        <div class="quiz-question">
-          <h3>2. ¿Qué producto te emociona más usar?</h3>
-          <label class="option"><input type="radio" name="q2" value="soft"> Rubor y brillo labial</label>
-          <label class="option"><input type="radio" name="q2" value="grunge"> Sombras oscuras y lápiz</label>
-          <label class="option"><input type="radio" name="q2" value="clean"> Gel para cejas y bálsamo</label>
-          <label class="option"><input type="radio" name="q2" value="douyin"> Sombras brillantes y labial</label>
-          <label class="option"><input type="radio" name="q2" value="latte"> Sombras marrones y bronce</label>
-        </div>
-        <div class="quiz-question">
-          <h3>3. Elige una paleta de colores.</h3>
-          <label class="option"><input type="radio" name="q3" value="soft"> Rosa, champán y malva</label>
-          <label class="option"><input type="radio" name="q3" value="grunge"> Negro, gris y vino</label>
-          <label class="option"><input type="radio" name="q3" value="clean"> Beige, durazno y nude</label>
-          <label class="option"><input type="radio" name="q3" value="douyin"> Rosa frío y perlado</label>
-          <label class="option"><input type="radio" name="q3" value="latte"> Caramelo, café y cobre</label>
-        </div>
-        <div class="quiz-question">
-          <h3>4. ¿Cómo quieres que se sienta tu look?</h3>
-          <label class="option"><input type="radio" name="q4" value="soft"> Delicado y romántico</label>
-          <label class="option"><input type="radio" name="q4" value="grunge"> Atrevido y diferente</label>
-          <label class="option"><input type="radio" name="q4" value="clean"> Cómodo y natural</label>
-          <label class="option"><input type="radio" name="q4" value="douyin"> Creativo y luminoso</label>
-          <label class="option"><input type="radio" name="q4" value="latte"> Cálido y sofisticado</label>
-        </div>
-        <button class="btn pink" type="submit">Descubrir mi estilo ♡</button>
-        <button class="btn light" type="reset">Volver a empezar</button>
-      </form>
-      <div id="style-result" class="feedback" aria-live="polite"></div>
-      <p class="small">Es un test recreativo, no una regla. ¡Puedes combinar todas las estéticas que quieras!</p>
-    </div>
-  </section>
-
-  <section id="inspiracion">
-    <div class="section-head">
-      <div class="eyebrow">Your personal beauty diary</div>
-      <h2>Mi rincón de inspiración ♡</h2>
-      <p>Guarda ideas, elige combinaciones y crea tu propia colección de looks.</p>
-    </div>
-
-    <div class="idea-box">
-      <div class="emoji">🎨</div>
-      <h3>Generador de inspiración</h3>
-      <p class="small">¿No sabes qué look probar? Deja que GLAM LAB te dé una idea.</p>
-      <div class="idea-result" id="idea-result">
-        Tu próxima inspiración aparecerá aquí ✨
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Tu belleza, tus reglas ✦</span>
+      <h1>Welcome to your <em>beauty era.</em></h1>
+      <p class="hero-copy">Un espacio para experimentar, descubrir tu estilo de maquillaje y divertirte aprendiendo. Aquí no hay reglas imposibles: hay ideas, creatividad y mucho glow.</p>
+      <div class="hero-buttons">
+        <a class="btn" href="#test">Descubre tu estilo ✨</a>
+        <a class="btn btn-outline" href="#estilos">Explorar estilos</a>
       </div>
-      <button class="btn pink" id="generate-idea">Dame una idea</button>
-      <button class="btn light" id="save-idea">♡ Guardar idea</button>
-      <p class="small" id="idea-status" aria-live="polite"></p>
+      <div class="pill-row">
+        <span class="pill">♡ Sin reglas estrictas</span>
+        <span class="pill">✧ Ideas para inspirarte</span>
+        <span class="pill">☁ A tu propio ritmo</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>12</strong><span>posibles resultados</span></div>
+        <div class="stat"><strong>6</strong><span>estilos destacados</span></div>
+        <div class="stat"><strong>∞</strong><span>formas de expresarte</span></div>
+      </div>
     </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1500&q=85" alt="Colección de productos de maquillaje">
+      <div class="floating-note"><strong>Little reminder ♡</strong>El maquillaje es una forma de expresión, no una obligación.</div>
+    </div>
+  </div>
+</section>
 
-    <div style="height:25px"></div>
-
+<section id="estilos" class="soft-section">
+  <div class="container">
     <div class="section-head">
-      <h2>Mi colección de favoritos</h2>
-      <p>Presiona el corazón para guardar tus ideas favoritas en este navegador.</p>
+      <span class="eyebrow">Encuentra tu vibe</span>
+      <h2>Seis estilos para explorar</h2>
+      <p>Desde looks suaves hasta maquillajes intensos y elegantes. Inspírate, combina ideas y adapta cada estilo a tus gustos.</p>
     </div>
-    <div class="moodboard" id="favorite-list"></div>
-    <p class="small" id="favorite-count" style="text-align:center;margin-top:15px"></p>
+    <div class="style-grid" id="styleGrid"></div>
+    <div class="style-detail" id="styleDetail" aria-live="polite"></div>
+  </div>
+</section>
 
-    <div style="height:35px"></div>
-
-    <div class="panel">
-      <div class="emoji">📔</div>
-      <h3>Mi diario de belleza</h3>
-      <p class="small">Escribe looks que quieras probar, combinaciones de colores o ideas para una ocasión especial.</p>
-      <textarea id="beauty-notes" placeholder="Ejemplo: probar sombras color vino con labios nude..."></textarea>
-      <div style="height:12px"></div>
-      <button class="btn pink" id="save-notes">Guardar mis notas</button>
-      <p class="note-status" id="notes-status" aria-live="polite"></p>
-      <p class="small">Tus notas se guardan en este navegador. No se publican en internet.</p>
-    </div>
-  </section>
-
-  <section id="tips" class="soft-section">
+<section id="test">
+  <div class="container">
     <div class="section-head">
-      <div class="eyebrow">Little beauty secrets</div>
-      <h2>El rincón de los tips</h2>
-      <p>Consejos prácticos para aprender, experimentar y cuidar tus productos.</p>
+      <span class="eyebrow">Beauty personality test</span>
+      <h2>¿Cuál es tu estilo?</h2>
+      <p>Contesta las preguntas según tus gustos. No hay respuestas correctas o incorrectas: este test es para divertirte y descubrir ideas.</p>
     </div>
-
-    <div class="tip-box">
-      <div class="emoji">💌</div>
-      <h3>Tu tip sorpresa</h3>
-      <p class="tip-text" id="tip-text">Presiona el botón para descubrir un consejo.</p>
-      <button class="btn pink" id="tip-button">Revelar otro tip ✨</button>
+    <div class="quiz-wrap">
+      <div id="quizContent">
+        <div class="quiz-top"><span id="quizStep">Pregunta 1 de 10</span><span id="quizPercent">10%</span></div>
+        <div class="progress"><div class="progress-fill" id="quizProgress"></div></div>
+        <h3 class="quiz-question" id="quizQuestion"></h3>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-controls">
+          <button class="btn btn-outline" id="quizBack" onclick="previousQuestion()">← Atrás</button>
+          <button class="btn" id="quizNext" onclick="nextQuestion()">Siguiente →</button>
+        </div>
+      </div>
+      <div class="quiz-result" id="quizResult"></div>
     </div>
+  </div>
+</section>
 
-    <div style="height:25px"></div>
-
-    <div class="grid">
-      <article class="card">
-        <div class="emoji">🧽</div>
-        <h3>Brochas limpias</h3>
-        <p>Lava tus brochas con regularidad y déjalas secar completamente antes de guardarlas.</p>
-      </article>
-      <article class="card">
-        <div class="emoji">🪞</div>
-        <h3>Difumina con calma</h3>
-        <p>Agrega la sombra poco a poco y usa movimientos suaves para integrar los colores.</p>
-      </article>
-      <article class="card">
-        <div class="emoji">💗</div>
-        <h3>Menos puede ser más</h3>
-        <p>Empieza con una pequeña cantidad de producto. Siempre puedes agregar un poco más.</p>
-      </article>
-      <article class="card">
-        <div class="emoji">🧴</div>
-        <h3>Cuida tu piel</h3>
-        <p>Usa productos adecuados para ti. Si algo te causa ardor o irritación, deja de utilizarlo.</p>
-      </article>
-      <article class="card">
-        <div class="emoji">☀️</div>
-        <h3>La luz importa</h3>
-        <p>Revisa tu maquillaje con luz natural si puedes. Los colores pueden verse diferentes bajo luces artificiales.</p>
-      </article>
-      <article class="card">
-        <div class="emoji">🫧</div>
-        <h3>Retira el maquillaje</h3>
-        <p>Al terminar el día, retíralo suavemente con un producto apropiado y evita frotar los ojos.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="dark-section" id="mitos">
+<section id="tips" class="soft-section">
+  <div class="container">
     <div class="section-head">
-      <div class="eyebrow">Beauty fact check</div>
+      <span class="eyebrow">Little beauty secrets</span>
+      <h2>Tu dosis de beauty tips</h2>
+      <p>Consejos sencillos que puedes adaptar a tu rutina y a los productos que ya tienes.</p>
+    </div>
+    <div class="tip-layout">
+      <div class="tip-visual">
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1000&q=85" alt="Productos de maquillaje y brochas">
+      </div>
+      <div class="tip-box">
+        <span class="tip-number" id="tipNumber">01</span>
+        <h3 id="tipTitle">Un pequeño secreto</h3>
+        <p class="tip-text" id="tipText">Presiona el botón para descubrir un consejo.</p>
+        <button class="btn" onclick="newTip()">Otro tip ✨</button>
+        <button class="btn btn-outline" onclick="saveCurrentTip()">Guardar tip ♡</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="inspiracion">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Moodboard generator</span>
+      <h2>Tu próxima inspiración</h2>
+      <p>Combina colores, acabados y vibes para inventar un look sin tener que comprar productos nuevos.</p>
+    </div>
+    <div class="generator">
+      <span class="eyebrow">Your next look could be...</span>
+      <h3 id="ideaTitle">Soft pink day 🌷</h3>
+      <div class="idea-display" id="ideaText">Un look rosado suave, mejillas frescas y labios brillantes.</div>
+      <div class="idea-chips" id="ideaChips"></div>
+      <div class="generator-controls">
+        <button class="btn" onclick="newIdea()">Generar otra idea ✨</button>
+        <button class="btn btn-outline" onclick="saveCurrentIdea()">Guardar inspiración ♡</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mitos" class="soft-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Beauty fact check</span>
       <h2>¿Mito o realidad?</h2>
-      <p>Responde las preguntas, descubre las explicaciones y suma puntos. ¡Vamos a ver cuánto sabes!</p>
+      <p>Comprueba qué tanto sabes sobre maquillaje, higiene y cuidado de los productos.</p>
     </div>
-    <div class="panel">
-      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-        <strong id="myth-number">Pregunta 1</strong>
-        <strong id="myth-score">Puntos: 0</strong>
+    <div class="myth-box">
+      <div class="quiz-top"><span class="myth-counter" id="mythCounter">Pregunta 1 de 6</span><span id="mythPoints">Puntos: 0</span></div>
+      <div class="progress"><div class="progress-fill" id="mythProgress"></div></div>
+      <h3 class="myth-question" id="mythQuestion"></h3>
+      <div class="myth-options">
+        <button class="btn" id="mythTrue" onclick="answerMyth(true)">Verdadero</button>
+        <button class="btn btn-outline" id="mythFalse" onclick="answerMyth(false)">Falso</button>
       </div>
-      <div class="progress"><div id="myth-progress"></div></div>
-      <h3 id="myth-question" style="line-height:1.6">¿Es obligatorio usar base para que un maquillaje se vea bien?</h3>
-      <div id="myth-answers">
-        <button class="btn pink" id="myth-true">Verdadero</button>
-        <button class="btn light" id="myth-false">Falso</button>
+      <div class="myth-feedback" id="mythFeedback" hidden aria-live="polite"></div>
+      <div style="margin-top:20px">
+        <button class="btn btn-light" id="mythNext" onclick="nextMyth()" disabled>Siguiente pregunta →</button>
+        <button class="btn btn-outline" id="mythRestart" onclick="restartMyths()" hidden>Volver a jugar ↻</button>
       </div>
-      <div class="feedback" id="myth-feedback" aria-live="polite"></div>
-      <button class="btn" id="myth-next" style="display:none">Siguiente pregunta →</button>
-      <p class="small">Puedes jugar otra vez cuando termines.</p>
-      <button class="btn light" id="myth-restart">Volver a jugar ↻</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
+<section id="mi-espacio">
+  <div class="container">
     <div class="section-head">
-      <div class="eyebrow">A little reminder</div>
-      <h2>El maquillaje es para divertirse</h2>
-      <p>No necesitas seguir todas las tendencias, tener muchos productos ni verte de una sola manera. Experimentar también es descubrir lo que te gusta.</p>
-      <a href="#inicio" class="btn pink">Volver al inicio ↑</a>
+      <span class="eyebrow">Your personal corner</span>
+      <h2>Mi espacio beauty</h2>
+      <p>Guarda tus ideas, tus tips favoritos y tus notas. La información se conserva en este navegador.</p>
     </div>
-  </section>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <h3>♡ Mis favoritos</h3>
+        <p class="small">Tus resultados, tips e inspiraciones guardadas.</p>
+        <div class="favorite-list" id="favoriteList"></div>
+        <button class="btn btn-outline btn-small" onclick="clearFavorites()">Borrar favoritos</button>
+      </div>
+      <div class="tool-card">
+        <h3>📔 Mi beauty journal</h3>
+        <p class="small">Anota ideas, combinaciones de colores o cosas que quieras probar.</p>
+        <textarea class="field" id="journalInput" placeholder="Hoy quiero probar un look con tonos rosados..."></textarea>
+        <div class="form-row">
+          <button class="btn" onclick="saveJournal()">Guardar nota</button>
+          <button class="btn btn-outline" onclick="clearJournal()">Borrar nota</button>
+        </div>
+        <p class="small" id="journalStatus" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="tool-grid" style="margin-top:22px">
+      <div class="tool-card">
+        <h3>🎨 Generador de paletas</h3>
+        <p class="small">Elige una combinación de colores para inspirar tu próximo look. Toca un color para copiar su código.</p>
+        <select class="field" id="paletteSelect" onchange="renderPalette()">
+          <option value="pink">Pink dreams</option>
+          <option value="earth">Tonos tierra</option>
+          <option value="berry">Berry mood</option>
+          <option value="cool">Cool girl</option>
+          <option value="classic">Clásicos elegantes</option>
+        </select>
+        <div class="palette" id="paletteDisplay"></div>
+        <p class="small" id="paletteStatus" aria-live="polite"></p>
+      </div>
+      <div class="tool-card">
+        <h3>🧴 Mi mini checklist</h3>
+        <p class="small">Marca lo que ya hiciste. No necesitas tener todos los productos para disfrutar del maquillaje.</p>
+        <div id="checklist">
+          <p><label><input type="checkbox"> Limpiar mis brochas cuando corresponda</label></p>
+          <p><label><input type="checkbox"> Revisar la fecha y el estado de mis productos</label></p>
+          <p><label><input type="checkbox"> Desmaquillarme antes de dormir</label></p>
+          <p><label><input type="checkbox"> No compartir productos que puedan contaminarse</label></p>
+          <p><label><input type="checkbox"> Lavarme las manos antes de maquillarme</label></p>
+        </div>
+        <p class="small">Tip: si un producto cambia de olor, color o textura, deja de usarlo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soft-section" id="reto">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Little challenge</span>
+      <h2>El reto de la semana</h2>
+      <p>Pequeñas actividades para practicar, aprender y divertirte con lo que ya tienes.</p>
+    </div>
+    <div class="challenge">
+      <div class="challenge-icon">🎀</div>
+      <h3 id="challengeTitle">Reto creativo</h3>
+      <p id="challengeText">Crea una combinación de tres colores que nunca hayas probado.</p>
+      <button class="btn" onclick="newChallenge()">Dame otro reto ✨</button>
+      <button class="btn btn-outline" onclick="completeChallenge()">¡Reto completado!</button>
+      <p id="challengeStatus" class="small" aria-live="polite"></p>
+      <div class="challenge-grid">
+        <div class="challenge-item"><strong>01 · Experimenta</strong><span class="small">Prueba una combinación de colores diferente.</span></div>
+        <div class="challenge-item"><strong>02 · Aprende</strong><span class="small">Investiga para qué sirve un producto.</span></div>
+        <div class="challenge-item"><strong>03 · Exprésate</strong><span class="small">Crea un look que represente tu mood.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
-  <div class="logo">GLAM <span>LAB.</span></div>
-  <p>Tu belleza. Tus reglas. Tu propio laboratorio de ideas. ♡</p>
-  <p>Proyecto educativo de Cultura Digital.</p>
+  <div class="container">
+    <div class="logo">GLAM<span> LAB</span></div>
+    <p>Beauty is creativity, not perfection. ♡</p>
+    <p>Un espacio para aprender, experimentar y expresarte a tu manera.</p>
+    <div class="footer-links">
+      <a href="#inicio">Volver al inicio ↑</a>
+      <a href="#estilos">Explorar estilos</a>
+      <a href="#test">Hacer el test</a>
+      <a href="#mitos">Aprender jugando</a>
+    </div>
+    <p style="margin-top:25px;font-size:.75rem">GLAM LAB · Proyecto educativo de cultura digital</p>
+  </div>
 </footer>
 
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-const styleInfo = {
-  soft: ["Soft Glam","🌸","Prueba sombras cálidas, rubor suave y labios brillantes."],
-  grunge: ["Grunge","🖤","Experimenta con sombras oscuras, lápiz difuminado y tonos vino."],
-  clean: ["Clean Look","☁️","Prueba una rutina sencilla con cejas peinadas y labios hidratados."],
-  douyin: ["Douyin","🫧","Explora sombras perladas, brillos y labios degradados."],
-  latte: ["Latte Makeup","☕","Combina marrones, caramelo y tonos cobrizos."]
+const $ = id => document.getElementById(id);
+
+function notify(message){
+  const toast=$("toast");
+  toast.textContent=message;
+  toast.classList.add("show");
+  clearTimeout(notify.timer);
+  notify.timer=setTimeout(()=>toast.classList.remove("show"),2400);
+}
+
+function toggleMenu(){$("navLinks").classList.toggle("open")}
+function closeMenu(){$("navLinks").classList.remove("open")}
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+  const dark=document.body.classList.contains("dark");
+  $("themeBtn").textContent=dark?"☀":"☾";
+  try{localStorage.setItem("glamTheme",dark?"dark":"light")}catch(e){}
+}
+try{
+  if(localStorage.getItem("glamTheme")==="dark"){
+    document.body.classList.add("dark");
+    $("themeBtn").textContent="☀";
+  }
+}catch(e){}
+
+const styles={
+soft:{
+name:"Soft Glam",tag:"Tendencia juvenil",
+img:"https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=85",
+short:"Un look luminoso y pulido, con tonos neutros y un acabado suave.",
+vibe:"Elegante, luminoso y versátil.",
+colors:"Champagne, beige, café suave y rosa nude.",
+steps:["Prepara la piel con tus productos habituales.","Aplica sombras neutras y difumina los bordes.","Agrega rubor suave y un toque de iluminador si te gusta.","Termina con labial nude o gloss."],
+tip:"La clave es difuminar y construir el color poco a poco. No necesitas usar muchos productos."
+},
+douyin:{
+name:"Douyin / Blush Look",tag:"Tendencia juvenil",
+img:"https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=900&q=85",
+short:"Colores rosados, brillo y un acabado inspirado en tendencias de belleza asiáticas.",
+vibe:"Dulce, brillante y creativo.",
+colors:"Rosa frío, malva, cereza y perlado.",
+steps:["Elige sombras rosadas o malva.","Difumina el rubor según el efecto que quieras.","Añade brillo en los labios.","Si usas delineado, prueba uno fino o ligeramente alargado."],
+tip:"Puedes adaptar el estilo a tu forma de ojos y a los productos que tengas."
+},
+grunge:{
+name:"Grunge / Smokey",tag:"Tendencia juvenil",
+img:"https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?auto=format&fit=crop&w=900&q=85",
+short:"Sombras profundas, delineados difuminados y una estética alternativa.",
+vibe:"Alternativo, intenso y expresivo.",
+colors:"Negro, gris, vino y café oscuro.",
+steps:["Aplica una sombra gris o café como base.","Añade un tono más profundo cerca de las pestañas.","Difumina los bordes para suavizar el contraste.","Combina con labios neutros o vino."],
+tip:"Trabaja con poca sombra al principio: siempre puedes agregar más."
+},
+nude:{
+name:"Nude sofisticado",tag:"Clásico y elegante",
+img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85",
+short:"Tonos naturales y acabados discretos para un look pulido.",
+vibe:"Minimalista, suave y refinado.",
+colors:"Beige, caramelo, durazno y café.",
+steps:["Usa tonos cercanos a los que te gusten naturalmente.","Difumina una sombra beige o café claro.","Elige un labial nude que te agrade.","Añade rubor si quieres dar más color."],
+tip:"Nude no significa un solo tono: puedes elegir colores cálidos, fríos o rosados."
+},
+natural:{
+name:"Natural para diario",tag:"Clásico y elegante",
+img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85",
+short:"Una rutina sencilla que prioriza comodidad y frescura.",
+vibe:"Ligero, cómodo y cotidiano.",
+colors:"Durazno, rosa suave, beige y café claro.",
+steps:["Empieza con una rutina cómoda para tu piel.","Peina las cejas si te gusta hacerlo.","Usa un toque de color en mejillas o labios.","Termina cuando te sientas a gusto."],
+tip:"Un look natural también puede tener delineado, brillo o cualquier detalle que disfrutes."
+},
+classic:{
+name:"Glam clásico",tag:"Clásico y elegante",
+img:"https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=900&q=85",
+short:"Delineado definido, labios protagonistas y un acabado atemporal.",
+vibe:"Clásico, definido y sofisticado.",
+colors:"Rojo, negro, champagne y café.",
+steps:["Elige si quieres destacar ojos o labios.","Prueba un delineado que te resulte cómodo.","Usa sombras neutras para acompañar.","Añade un labial intenso o un nude definido."],
+tip:"No existe un único delineado clásico: ajusta su forma a tus preferencias."
+}
 };
 
-const styleForm = document.getElementById("style-quiz");
-const styleResult = document.getElementById("style-result");
-
-function updateStyleProgress() {
-  let answered = 0;
-  for (let i = 1; i <= 4; i++) {
-    if (styleForm.querySelector('input[name="q' + i + '"]:checked')) answered++;
-  }
-  document.getElementById("style-progress-label").textContent =
-    answered + " de 4 preguntas respondidas";
-  document.getElementById("style-progress").style.width = (answered / 4 * 100) + "%";
+function renderStyles(){
+  $("styleGrid").innerHTML=Object.entries(styles).map(([key,s])=>`
+  <article class="style-card">
+    <img src="${s.img}" alt="${s.name}" loading="lazy">
+    <div class="style-card-body">
+      <span class="tag">${s.tag}</span>
+      <h3>${s.name}</h3>
+      <p>${s.short}</p>
+      <div class="card-bottom">
+        <button class="btn" onclick="showStyle('${key}')">Ver guía ↗</button>
+        <button class="text-btn" onclick="saveFavorite('Estilo: ${s.name}')">♡ Guardar</button>
+      </div>
+    </div>
+  </article>`).join("");
 }
-styleForm.addEventListener("change", updateStyleProgress);
+function showStyle(key){
+  const s=styles[key];
+  if(!s)return;
+  $("styleDetail").innerHTML=`
+    <div class="detail-grid">
+      <div><img src="${s.img}" alt="${s.name}" loading="lazy"></div>
+      <div>
+        <span class="eyebrow">${s.tag}</span>
+        <h2>${s.name}</h2>
+        <p>${s.short}</p>
+        <p><strong>La vibra:</strong> ${s.vibe}</p>
+        <p><strong>Paleta sugerida:</strong> ${s.colors}</p>
+        <h3>Guía para probarlo</h3>
+        <ol>${s.steps.map(step=>`<li>${step}</li>`).join("")}</ol>
+        <p><strong>Little tip:</strong> ${s.tip}</p>
+        <button class="btn btn-small" onclick="saveFavorite('Estilo: ${s.name}')">Guardar estilo ♡</button>
+      </div>
+    </div>`;
+  $("styleDetail").classList.add("active");
+  $("styleDetail").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+renderStyles();
 
-styleForm.addEventListener("submit", function(event) {
-  event.preventDefault();
-  const data = new FormData(styleForm);
-  const values = [data.get("q1"),data.get("q2"),data.get("q3"),data.get("q4")];
-  if (values.some(value => !value)) {
-    styleResult.textContent = "¡Te falta poquito! Contesta las cuatro preguntas. 💗";
-    return;
-  }
-  const scores = {soft:0,grunge:0,clean:0,douyin:0,latte:0};
-  values.forEach(value => scores[value]++);
-  const winner = Object.keys(scores).sort((a,b) => scores[b] - scores[a])[0];
-  const info = styleInfo[winner];
-  styleResult.innerHTML = "<div style='font-size:36px'>" + info[1] +
-    "</div><h3>¡Tu estilo es " + info[0] + "!</h3><p>" + info[2] +
-    "</p><p>¡También puedes mezclar estilos y crear el tuyo propio!</p>";
-});
-styleForm.addEventListener("reset", function() {
-  styleResult.textContent = "";
-  setTimeout(updateStyleProgress, 0);
-});
+const outcomes={
+soft:{name:"Soft Glam",vibe:"Te atraen los looks pulidos, luminosos y suaves.",colors:"Champagne, beige, rosa y café claro.",tips:["Difumina los bordes de las sombras.","Prueba un gloss o labial nude.","Agrega el brillo poco a poco."],img:styles.soft.img,card:true},
+douyin:{name:"Douyin / Blush Look",vibe:"Te gustan los tonos rosados, los brillos y los detalles delicados.",colors:"Rosa, malva, cereza y perlado.",tips:["Prueba distintas intensidades de rubor.","Combina brillo con tonos suaves.","Adapta las tendencias a tus gustos."],img:styles.douyin.img,card:true},
+grunge:{name:"Grunge / Smokey",vibe:"Prefieres experimentar con tonos profundos y una estética alternativa.",colors:"Negro, gris, vino y café oscuro.",tips:["Empieza con poca sombra.","Difumina los bordes.","Combina ojos intensos con labios suaves si quieres."],img:styles.grunge.img,card:true},
+nude:{name:"Nude sofisticado",vibe:"Te gusta la sencillez con pequeños detalles elegantes.",colors:"Beige, caramelo, durazno y café.",tips:["Elige tonos que disfrutes.","Prueba un labial nude.","No necesitas muchos productos."],img:styles.nude.img,card:true},
+natural:{name:"Natural para diario",vibe:"Prefieres rutinas sencillas, cómodas y fáciles de adaptar.",colors:"Durazno, rosa suave y café claro.",tips:["Prioriza los productos que sí usas.","Prueba un toque de rubor.","Haz que la rutina sea cómoda."],img:styles.natural.img,card:true},
+classic:{name:"Glam clásico",vibe:"Te gustan los looks definidos que nunca pasan de moda.",colors:"Rojo, negro, champagne y café.",tips:["Elige un punto focal.","Prueba diferentes delineados.","Combina los tonos a tu manera."],img:styles.classic.img,card:true},
+latte:{name:"Latte Makeup",vibe:"Te llaman la atención los tonos cálidos, bronceados y cafés.",colors:"Miel, canela, terracota y caramelo.",tips:["Combina cafés de distintas intensidades.","Prueba sombras cálidas.","Usa los tonos que más te gusten."],img:styles.nude.img},
+siren:{name:"Siren Eyes",vibe:"Te gustan los ojos alargados y los delineados definidos.",colors:"Negro, café, gris y champán.",tips:["Experimenta con un delineado fino.","Difumina el extremo exterior.","Busca una forma con la que te sientas cómoda."],img:styles.grunge.img},
+coquette:{name:"Coquette Beauty",vibe:"Te atraen los detalles románticos, los lazos y los tonos suaves.",colors:"Rosa pastel, cereza, crema y perlado.",tips:["Prueba un labial rosado.","Combina accesorios delicados.","Añade brillo si te gusta."],img:styles.douyin.img},
+monochrome:{name:"Monochrome Makeup",vibe:"Te gusta que ojos, mejillas y labios compartan una misma familia de colores.",colors:"Rosa, durazno, malva o café.",tips:["Elige un color principal.","Combina tonos de distinta intensidad.","Comprueba que el producto sea apto para cada zona."],img:styles.soft.img},
+fresh:{name:"Fresh & Dewy",vibe:"Prefieres un acabado luminoso y una rutina ligera.",colors:"Durazno, rosa, beige y perlado.",tips:["Usa productos adecuados para tu piel.","Prueba un toque de iluminador.","No necesitas cubrir toda la piel."],img:styles.natural.img},
+editorial:{name:"Editorial Creative",vibe:"Te divierte el maquillaje artístico y experimentar con formas y colores.",colors:"Los que quieras combinar: neón, pastel, negro o metálico.",tips:["Haz pruebas creativas en casa.","Usa productos diseñados para la zona donde los aplicas.","Inspírate sin tener que copiar exactamente un look."],img:styles.classic.img}
+};
 
-const ideas = [
-  {title:"Atardecer rosado",colors:"Rosa + coral + dorado",look:"Combina una sombra coral suave con un toque dorado y labios rosados."},
-  {title:"Noche alternativa",colors:"Negro + gris + malva",look:"Prueba un delineado difuminado y labios malva."},
-  {title:"Café con leche",colors:"Marrón + caramelo + beige",look:"Crea un look en tonos tierra con sombras marrones y labios nude."},
-  {title:"Jardín coquette",colors:"Rosa pastel + champán",look:"Combina rubor rosado, brillo de labios y sombras suaves."},
-  {title:"Brillo de luna",colors:"Perlado + rosa frío",look:"Explora sombras perladas y un brillo sutil en el lagrimal."},
-  {title:"Monocromático berry",colors:"Frambuesa + malva",look:"Usa tonos de la misma familia en mejillas, ojos y labios."},
-  {title:"Y2K divertido",colors:"Lila + plateado",look:"Prueba un toque metálico y un delineado creativo."},
-  {title:"Clásico elegante",colors:"Marrón + vino",look:"Combina sombras neutras con un labial color vino."},
-  {title:"Melocotón suave",colors:"Durazno + crema",look:"Crea un look cálido con sombras durazno y labios naturales."},
-  {title:"E-girl creativa",colors:"Rosa + negro",look:"Prueba un delineado gráfico o un pequeño detalle decorativo apto para la piel."}
+const questions=[
+{q:"¿Qué sensación quieres que transmita tu maquillaje?",a:[["Suave y luminoso","Me gusta un acabado pulido.",["soft","fresh"]],["Dulce y brillante","Quiero jugar con rosas y brillo.",["douyin","coquette"]],["Alternativo e intenso","Me llaman la atención los tonos oscuros.",["grunge","siren"]],["Elegante y sencillo","Prefiero algo clásico.",["nude","classic"]]]},
+{q:"¿Qué gama de colores te llama más?",a:[["Rosas y malvas","Tonos dulces o fríos.",["douyin","coquette"]],["Cafés y caramelo","Tonos cálidos y tierra.",["latte","nude"]],["Negros y grises","Colores profundos.",["grunge","siren"]],["Colores creativos","Me gusta experimentar.",["editorial","monochrome"]]]},
+{q:"Si pudieras destacar una parte, ¿cuál elegirías?",a:[["Mejillas","Me gustan los tonos rosados.",["douyin","fresh"]],["Ojos","Quiero jugar con sombras y delineado.",["siren","grunge"]],["Labios","Me gustan los tonos definidos.",["classic","coquette"]],["Todo en armonía","Prefiero combinar tonos.",["monochrome","soft"]]]},
+{q:"¿Cuánto tiempo te gustaría dedicarle?",a:[["Pocos minutos","Algo fácil de repetir.",["natural","fresh"]],["Un ratito","Disfruto difuminar.",["soft","latte"]],["El tiempo que necesite","Me gusta practicar.",["editorial","siren"]],["Depende del día","A veces sencillo, a veces intenso.",["classic","grunge"]]]},
+{q:"¿Qué acabado te gusta más?",a:[["Luminoso","Me gusta el efecto glow.",["fresh","soft"]],["Brillante","Gloss y destellos.",["douyin","coquette"]],["Mate o ahumado","Me llaman los acabados profundos.",["grunge","siren"]],["Definido","Me gustan los detalles pulidos.",["classic","nude"]]]},
+{q:"¿Qué accesorio combinarías con tu look?",a:[["Un lazo","Algo romántico.",["coquette","douyin"]],["Joyas doradas","Me gustan los tonos cálidos.",["latte","classic"]],["Accesorios alternativos","Algo con personalidad.",["grunge","editorial"]],["Algo minimalista","Prefiero la sencillez.",["natural","nude"]]]},
+{q:"¿Qué tipo de inspiración guardas más?",a:[["Looks rosados","Rubor, brillo y tonos dulces.",["douyin","coquette"]],["Maquillaje neutro","Looks combinables.",["nude","soft"]],["Delineados intensos","Ojos definidos.",["siren","grunge"]],["Ideas artísticas","Colores y diseños originales.",["editorial","monochrome"]]]},
+{q:"¿Qué te gustaría aprender a dominar?",a:[["Difuminar sombras","Crear transiciones suaves.",["soft","latte"]],["Aplicar rubor","Probar distintas posiciones y tonos.",["douyin","fresh"]],["Hacer delineados","Experimentar con diferentes formas.",["siren","classic"]],["Combinar colores","Crear una paleta propia.",["monochrome","editorial"]]]},
+{q:"¿Qué ambiente te inspira?",a:[["Flores y tonos pastel","Un mood romántico.",["coquette","douyin"]],["Café y tonos tierra","Un mood cálido.",["latte","nude"]],["Música alternativa","Un mood intenso.",["grunge","editorial"]],["Sencillez y brillo","Un mood relajado.",["natural","fresh"]]]},
+{q:"¿Cómo te gustaría terminar tu look?",a:[["Con un toque de gloss","Fresco y luminoso.",["fresh","soft"]],["Con rubor rosado","Suave y dulce.",["douyin","coquette"]],["Con ojos protagonistas","Definido y expresivo.",["siren","grunge"]],["Con labios definidos","Clásico y elegante.",["classic","nude"]]]}
 ];
-let currentIdea = null;
 
-document.getElementById("generate-idea").addEventListener("click", function() {
-  let idea;
-  do {
-    idea = ideas[Math.floor(Math.random() * ideas.length)];
-  } while (ideas.length > 1 && idea === currentIdea);
-  currentIdea = idea;
-  document.getElementById("idea-result").innerHTML =
-    "<h3>" + idea.title + "</h3><span class='tag'>" + idea.colors +
-    "</span><p>" + idea.look + "</p>";
-  document.getElementById("idea-status").textContent = "";
-});
+let qIndex=0;
+let answers=Array(questions.length).fill(null);
+function renderQuestion(){
+  const q=questions[qIndex];
+  $("quizStep").textContent=`Pregunta ${qIndex+1} de ${questions.length}`;
+  $("quizPercent").textContent=`${Math.round((qIndex+1)/questions.length*100)}%`;
+  $("quizProgress").style.width=`${(qIndex+1)/questions.length*100}%`;
+  $("quizQuestion").textContent=q.q;
+  $("quizOptions").innerHTML=q.a.map((a,i)=>`
+    <button class="quiz-option ${answers[qIndex]===i?"selected":""}" onclick="selectAnswer(${i})">
+      <strong>${a[0]}</strong><span>${a[1]}</span>
+    </button>`).join("");
+  $("quizBack").disabled=qIndex===0;
+  $("quizNext").textContent=qIndex===questions.length-1?"Ver mi resultado ✨":"Siguiente →";
+}
+function selectAnswer(i){answers[qIndex]=i;renderQuestion()}
+function previousQuestion(){if(qIndex>0){qIndex--;renderQuestion()}}
+function nextQuestion(){
+  if(answers[qIndex]===null){notify("Elige una opción para continuar 💗");return}
+  if(qIndex<questions.length-1){qIndex++;renderQuestion();return}
+  calculateResult();
+}
+function calculateResult(){
+  const tally={};
+  answers.forEach((answer,i)=>{
+    questions[i].a[answer][2].forEach(key=>tally[key]=(tally[key]||0)+1);
+  });
+  const max=Math.max(...Object.values(tally));
+  const winners=Object.keys(tally).filter(k=>tally[k]===max);
+  const key=winners[Math.floor(Math.random()*winners.length)];
+  const r=outcomes[key];
+  $("quizContent").style.display="none";
+  $("quizResult").classList.add("active");
+  $("quizResult").innerHTML=`
+    <span class="eyebrow">Your beauty personality ✨</span>
+    <h2>Tu resultado es: ${r.name}</h2>
+    <p>${r.vibe}</p>
+    <img class="result-image" src="${r.img}" alt="Inspiración ${r.name}">
+    <div class="result-extra">
+      <p><strong>Colores para explorar:</strong> ${r.colors}</p>
+      <h3>Ideas para empezar</h3>
+      <ul>${r.tips.map(t=>`<li>${t}</li>`).join("")}</ul>
+    </div>
+    <p class="small">Este resultado es una inspiración basada en tus respuestas, no una etiqueta fija. Puedes disfrutar de varios estilos a la vez.</p>
+    <div class="result-actions">
+      ${r.card?`<button class="btn" onclick="showStyle('${key}');document.getElementById('estilos').scrollIntoView({behavior:'smooth'})">Ver guía del estilo ↗</button>`:""}
+      <button class="btn" onclick="saveFavorite('Resultado: ${r.name}')">Guardar resultado ♡</button>
+      <button class="btn btn-outline" onclick="restartQuiz()">Volver a hacer el test ↻</button>
+    </div>`;
+  window.lastQuizResult=r.name;
+  window.scrollTo({top:$("test").offsetTop-80,behavior:"smooth"});
+}
+function restartQuiz(){
+  qIndex=0;answers=Array(questions.length).fill(null);
+  $("quizContent").style.display="block";
+  $("quizResult").classList.remove("active");
+  $("quizResult").innerHTML="";
+  renderQuestion();
+}
+renderQuestion();
 
-function getFavorites() {
-  try { return JSON.parse(localStorage.getItem("glamFavorites") || "[]"); }
-  catch(e) { return []; }
+const tips=[
+["Prepara tu piel","Una rutina sencilla de cuidado antes del maquillaje puede ayudar a que los productos se distribuyan mejor. Elige productos adecuados para tu piel."],
+["Difumina poco a poco","Es más fácil agregar color gradualmente que intentar corregir demasiado producto de una sola vez."],
+["Limpia tus brochas","Limpia las brochas y herramientas regularmente, deja que sequen por completo y sigue las instrucciones de sus materiales."],
+["Prueba los colores","Puedes probar combinaciones con lo que ya tienes. No necesitas comprar productos nuevos para experimentar."],
+["Cuida tus productos","Evita compartir productos que entran en contacto directo con ojos o labios y revisa su fecha de caducidad."],
+["Elige tu comodidad","No tienes que usar base, delineador o pestañas para que un look esté completo. Tú decides qué te gusta."],
+["Guarda inspiración","Guardar fotos de colores o técnicas que te interesan puede ayudarte a crear tus propias combinaciones."],
+["Labios suaves","Si te gusta usar labial, puedes aplicar un bálsamo adecuado antes para que los labios se sientan cómodos."],
+["Prueba el delineado","Practica primero con trazos pequeños y sin prisa. Puedes adaptar la forma a tus preferencias."],
+["Menos también funciona","Un look sencillo puede ser tan creativo como uno elaborado. El número de productos no determina el resultado."]
+];
+let currentTip=0;
+function renderTip(i){
+  currentTip=i;$("tipNumber").textContent=String(i+1).padStart(2,"0");
+  $("tipTitle").textContent=tips[i][0];$("tipText").textContent=tips[i][1];
 }
-function saveFavorites(items) {
-  try {
-    localStorage.setItem("glamFavorites",JSON.stringify(items));
-    return true;
-  } catch(e) { return false; }
+function newTip(){
+  let n=Math.floor(Math.random()*tips.length);
+  if(tips.length>1&&n===currentTip)n=(n+1)%tips.length;
+  renderTip(n);
 }
-function renderFavorites() {
-  const favorites = getFavorites();
-  const list = document.getElementById("favorite-list");
-  list.innerHTML = "";
-  if (!favorites.length) {
-    list.innerHTML = "<div class='mood'><div class='emoji'>💌</div><h3>Tu colección empieza aquí</h3><p>Genera una idea y guárdala para verla en este rincón.</p></div>";
-  } else {
-    favorites.forEach((item,index) => {
-      const article = document.createElement("article");
-      article.className = "mood";
-      const title = document.createElement("h3");
-      title.textContent = item.title;
-      const colors = document.createElement("span");
-      colors.className = "tag";
-      colors.textContent = item.colors;
-      const description = document.createElement("p");
-      description.textContent = item.look;
-      const remove = document.createElement("button");
-      remove.className = "favorite-button";
-      remove.textContent = "♡ Quitar de favoritos";
-      remove.addEventListener("click",function() {
-        const updated = getFavorites();
-        updated.splice(index,1);
-        saveFavorites(updated);
-        renderFavorites();
-      });
-      article.append(title,colors,description,remove);
-      list.appendChild(article);
-    });
-  }
-  document.getElementById("favorite-count").textContent =
-    favorites.length + (favorites.length === 1 ? " idea guardada" : " ideas guardadas");
+function saveCurrentTip(){saveFavorite("Tip: "+tips[currentTip][0]+" — "+tips[currentTip][1])}
+renderTip(0);
+
+const ideas=[
+{title:"Soft pink day 🌷",text:"Sombras rosadas, mejillas suaves y labios brillantes.",chips:["Rosa","Glow","Dulce"]},
+{title:"Coffee date ☕",text:"Tonos café, caramelo y un acabado cálido.",chips:["Caramelo","Café","Cálido"]},
+{title:"Midnight mood 🖤",text:"Sombras grises difuminadas y labios neutros.",chips:["Gris","Smokey","Alternativo"]},
+{title:"Cherry lips 🍒",text:"Labios cereza como protagonistas con ojos sencillos.",chips:["Cereza","Clásico","Definido"]},
+{title:"Lavender dream 💜",text:"Tonos lavanda, malva y un detalle perlado.",chips:["Lavanda","Malva","Creativo"]},
+{title:"Golden hour ✨",text:"Sombras doradas y tonos tierra para una combinación cálida.",chips:["Dorado","Tierra","Luminoso"]},
+{title:"Monochrome mood 🎨",text:"Elige una familia de color y úsala en diferentes intensidades.",chips:["Un color","Armonía","Creativo"]},
+{title:"Clean & simple ☁",text:"Una rutina sencilla, cejas peinadas y el producto que más disfrutes.",chips:["Sencillo","Cómodo","Diario"]}
+];
+let currentIdea=0;
+function renderIdea(i){
+  currentIdea=i;const a=ideas[i];
+  $("ideaTitle").textContent=a.title;$("ideaText").textContent=a.text;
+  $("ideaChips").innerHTML=a.chips.map(c=>`<span class="pill">${c}</span>`).join("");
 }
-document.getElementById("save-idea").addEventListener("click",function() {
-  const status = document.getElementById("idea-status");
-  if (!currentIdea) {
-    status.textContent = "Primero genera una idea para poder guardarla. 💗";
-    return;
+function newIdea(){
+  let n=Math.floor(Math.random()*ideas.length);
+  if(n===currentIdea)n=(n+1)%ideas.length;
+  renderIdea(n);
+}
+function saveCurrentIdea(){saveFavorite("Inspiración: "+ideas[currentIdea].title+" — "+ideas[currentIdea].text)}
+renderIdea(0);
+
+const myths=[
+{q:"¿Las brochas de maquillaje se deben limpiar con regularidad?",answer:true,why:"¡Realidad! Limpiarlas regularmente ayuda a retirar residuos y acumulación de producto. Respeta las instrucciones de limpieza y deja que sequen por completo."},
+{q:"¿Necesitas usar maquillaje para tener una piel bonita o cuidada?",answer:false,why:"¡Mito! El maquillaje es opcional. Una rutina de cuidado sencilla y adecuada puede ser suficiente; cada piel es diferente."},
+{q:"¿Todos los productos para labios son seguros para usar como rubor?",answer:false,why:"¡Mito! No todos están formulados para usarse en las mejillas. Revisa las indicaciones del fabricante y usa cada producto en las zonas para las que está diseñado."},
+{q:"¿Difuminar las sombras puede ayudar a suavizar los bordes?",answer:true,why:"¡Realidad! Difuminar puede ayudar a que los colores se mezclen gradualmente. Puedes controlar el resultado usando poca cantidad de producto."},
+{q:"¿Todas las personas tienen que utilizar la misma técnica de maquillaje?",answer:false,why:"¡Mito! Las preferencias, las formas de aplicación y los resultados deseados son diferentes. Puedes adaptar las técnicas a tus gustos."},
+{q:"¿Conviene revisar los ingredientes si sabes que tienes sensibilidad a alguno?",answer:true,why:"¡Realidad! Revisar la etiqueta y seguir las instrucciones es una buena práctica. Si un producto te causa irritación, deja de usarlo y consulta a un profesional si hace falta."}
+];
+let mythIndex=0,mythScore=0,mythAnswered=false;
+function renderMyth(){
+  const m=myths[mythIndex];
+  $("mythCounter").textContent=`Pregunta ${mythIndex+1} de ${myths.length}`;
+  $("mythPoints").textContent=`Puntos: ${mythScore}`;
+  $("mythProgress").style.width=`${(mythIndex+1)/myths.length*100}%`;
+  $("mythQuestion").textContent=m.q;
+  $("mythFeedback").hidden=true;
+  $("mythTrue").disabled=false;$("mythFalse").disabled=false;
+  $("mythNext").disabled=true;$("mythNext").hidden=false;$("mythRestart").hidden=true;
+  mythAnswered=false;
+}
+function answerMyth(value){
+  if(mythAnswered)return;
+  mythAnswered=true;
+  const m=myths[mythIndex],correct=value===m.answer;
+  if(correct)mythScore++;
+  $("mythPoints").textContent=`Puntos: ${mythScore}`;
+  $("mythFeedback").hidden=false;
+  $("mythFeedback").innerHTML=`<strong>${correct?"¡Correcto! ✨":"No exactamente 💗"}</strong><p>${m.why}</p>`;
+  $("mythTrue").disabled=true;$("mythFalse").disabled=true;
+  if(mythIndex===myths.length-1){
+    $("mythNext").hidden=true;$("mythRestart").hidden=false;
+    $("mythFeedback").innerHTML+=`<p><strong>Resultado final: ${mythScore} de ${myths.length}.</strong> ${mythScore===myths.length?"¡Excelente!":mythScore>=4?"¡Muy bien!":"¡Ya aprendiste algo nuevo!"}</p>`;
+  }else{
+    $("mythNext").disabled=false;
   }
-  const favorites = getFavorites();
-  if (favorites.some(item => item.title === currentIdea.title)) {
-    status.textContent = "¡Esta idea ya está en tus favoritos!";
-    return;
+}
+function nextMyth(){if(mythIndex<myths.length-1){mythIndex++;renderMyth()}}
+function restartMyths(){mythIndex=0;mythScore=0;renderMyth()}
+renderMyth();
+
+const palettes={
+pink:[["Rosa suave","#F4C7D4"],["Malva","#C58DA8"],["Crema","#FFF0DE"],["Cereza","#8C3453"],["Perlado","#EADBEF"]],
+earth:[["Caramelo","#B77A50"],["Canela","#9A6044"],["Beige","#D8BD9D"],["Cacao","#5B382C"],["Miel","#D9A85B"]],
+berry:[["Frambuesa","#C94F78"],["Ciruela","#70405F"],["Rosa viejo","#B77C91"],["Crema","#F3E2D5"],["Vino","#762E46"]],
+cool:[["Lavanda","#B9A7D8"],["Gris","#85818F"],["Rosa frío","#D99CB8"],["Plata","#C9CDD7"],["Malva","#8D6C91"]],
+classic:[["Champagne","#E6C99C"],["Rojo","#A82E42"],["Negro","#28232A"],["Marfil","#F5EBDD"],["Café","#765342"]]
+};
+function renderPalette(){
+  const p=palettes[$("paletteSelect").value];
+  $("paletteDisplay").innerHTML=p.map(c=>`<button class="swatch" style="background:${c[1]}" onclick="copyColor('${c[1]}')" aria-label="Copiar código ${c[1]}" title="Copiar ${c[1]}"><span>${c[1]}</span></button>`).join("");
+}
+function copyColor(code){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(code).then(()=>notify("Código copiado: "+code)).catch(()=>notify("Código de color: "+code));
+  }else notify("Código de color: "+code);
+}
+renderPalette();
+
+function readArray(key){
+  try{const data=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(data)?data:[]}catch(e){return []}
+}
+function saveFavorite(item){
+  const list=readArray("glamLabFavorites");
+  if(list.includes(item)){notify("Ya está en tus favoritos ♡");return}
+  list.unshift(item);
+  try{localStorage.setItem("glamLabFavorites",JSON.stringify(list));renderFavorites();notify("Guardado en tus favoritos ♡")}
+  catch(e){notify("No se pudo guardar. Revisa el almacenamiento del navegador.")}
+}
+function renderFavorites(){
+  const list=readArray("glamLabFavorites");
+  if(!list.length){$("favoriteList").innerHTML='<p class="empty">Todavía no tienes favoritos. Guarda un estilo, tip o inspiración.</p>';return}
+  $("favoriteList").innerHTML=list.map((item,i)=>`
+    <div class="favorite-item"><span>${escapeHTML(item)}</span><button class="text-btn" onclick="removeFavorite(${i})" aria-label="Eliminar favorito">✕</button></div>`).join("");
+}
+function removeFavorite(i){
+  const list=readArray("glamLabFavorites");list.splice(i,1);
+  localStorage.setItem("glamLabFavorites",JSON.stringify(list));renderFavorites();notify("Favorito eliminado");
+}
+function clearFavorites(){
+  if(!readArray("glamLabFavorites").length){notify("No tienes favoritos guardados");return}
+  if(confirm("¿Quieres borrar todos tus favoritos?")){
+    localStorage.removeItem("glamLabFavorites");renderFavorites();notify("Favoritos eliminados");
   }
-  favorites.push(currentIdea);
-  if (saveFavorites(favorites)) {
-    status.textContent = "¡Idea guardada en tu rincón! ♡";
-    renderFavorites();
-  } else {
-    status.textContent = "Tu navegador no permitió guardar esta idea.";
+}
+function escapeHTML(str){
+  return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function saveJournal(){
+  try{
+    localStorage.setItem("glamLabJournal",$("journalInput").value);
+    $("journalStatus").textContent="Tu nota se guardó en este navegador ♡";
+    notify("Nota guardada");
+  }catch(e){$("journalStatus").textContent="No se pudo guardar la nota en este navegador."}
+}
+function clearJournal(){
+  if(confirm("¿Quieres borrar tu nota del diario?")){
+    $("journalInput").value="";
+    localStorage.removeItem("glamLabJournal");
+    $("journalStatus").textContent="Nota borrada.";
   }
-});
+}
+try{$("journalInput").value=localStorage.getItem("glamLabJournal")||""}catch(e){}
 renderFavorites();
 
-const notes = document.getElementById("beauty-notes");
-try { notes.value = localStorage.getItem("glamNotes") || ""; } catch(e) {}
-document.getElementById("save-notes").addEventListener("click",function() {
-  const status = document.getElementById("notes-status");
-  try {
-    localStorage.setItem("glamNotes",notes.value);
-    status.textContent = "Tus notas quedaron guardadas en este navegador. ♡";
-  } catch(e) {
-    status.textContent = "No se pudieron guardar las notas en este navegador.";
-  }
-});
-
-const tips = [
-  "Limpia tus brochas con regularidad y deja que se sequen completamente.",
-  "Aplica las sombras poco a poco para controlar mejor la intensidad.",
-  "Puedes usar rubor en pequeñas cantidades y añadir más si quieres.",
-  "No compartas máscara de pestañas ni productos que entren en contacto con los ojos.",
-  "Revisa la caducidad de tus productos y deja de usar cualquiera que te irrite.",
-  "No necesitas comprar todos los productos virales: empieza por lo que te interese.",
-  "Prueba tus combinaciones con la iluminación en la que normalmente estarás.",
-  "Peinar las cejas suavemente puede ayudar a darles un acabado ordenado.",
-  "Para probar un color nuevo, empieza con un toque pequeño antes de intensificarlo.",
-  "Mantén cerrados tus productos para que se conserven adecuadamente.",
-  "Retira el maquillaje con suavidad y evita frotar la zona de los ojos.",
-  "Un bálsamo labial puede ayudar a que los labios se sientan hidratados antes del color.",
-  "Lava tus manos antes de maquillarte para mantener una rutina más higiénica.",
-  "No hay una sola forma correcta de maquillarse: adapta las técnicas a tus preferencias.",
-  "Guarda una foto de los looks que te inspiran y anota qué colores se utilizaron.",
-  "Si un producto te causa picor, ardor o irritación, deja de usarlo.",
-  "No necesitas base para usar rubor, sombras o labial: puedes elegir los pasos que quieras.",
-  "Practicar un delineado en pequeños trazos puede ayudarte a controlar el movimiento.",
-  "Limpia las superficies donde colocas tus brochas y productos.",
-  "Revisa las instrucciones de cada producto y evita usar cosméticos cerca del interior del ojo."
+const challenges=[
+["Reto de colores","Crea una combinación de tres colores que nunca hayas probado."],
+["Reto de investigación","Investiga para qué sirve un producto que tengas y lee sus indicaciones."],
+["Reto monocromático","Imagina un look usando diferentes tonos de una misma familia de color."],
+["Reto de inspiración","Elige una imagen de referencia y encuentra tres detalles que te gusten."],
+["Reto de creatividad","Inventa un nombre para un look y elige una paleta de colores."],
+["Reto de organización","Revisa tus productos y separa los que ya no estén en buenas condiciones."],
+["Reto de práctica","Practica un difuminado con poca cantidad de sombra y observa cómo cambia."],
+["Reto de estilo","Combina una idea de dos estilos diferentes para inventar tu propia versión."]
 ];
-let lastTip = -1;
-document.getElementById("tip-button").addEventListener("click",function() {
-  let index;
-  do { index = Math.floor(Math.random() * tips.length); }
-  while (tips.length > 1 && index === lastTip);
-  lastTip = index;
-  document.getElementById("tip-text").textContent = tips[index];
-});
-
-const myths = [
-  {q:"¿Es obligatorio usar base para que un maquillaje se vea bien?",answer:false,why:"La base es opcional. Puedes crear looks con corrector, rubor, sombras o ningún producto para la piel."},
-  {q:"¿Hay que lavar las brochas de maquillaje con regularidad?",answer:true,why:"¡Correcto! Limpiarlas con regularidad ayuda a retirar residuos y mantener una rutina más higiénica."},
-  {q:"¿Todas las personas necesitan usar exactamente los mismos productos?",answer:false,why:"Cada persona tiene preferencias y necesidades diferentes. Una rutina puede ser sencilla o más elaborada."},
-  {q:"¿El maquillaje debe retirarse antes de dormir?",answer:true,why:"Sí. Retirarlo suavemente al final del día ayuda a mantener una rutina de cuidado de la piel."},
-  {q:"¿El producto más caro siempre es el mejor?",answer:false,why:"El precio no garantiza que un producto sea el más adecuado para ti. Importan su calidad, uso y tolerancia."},
-  {q:"¿Se pueden combinar distintos estilos de maquillaje?",answer:true,why:"¡Claro! Puedes combinar colores y técnicas para crear un estilo propio."},
-  {q:"¿Compartir máscara de pestañas es una buena práctica?",answer:false,why:"Es mejor no compartir productos que entran en contacto con los ojos, por higiene."},
-  {q:"¿Hay que usar muchísimo producto para conseguir un look intenso?",answer:false,why:"Puedes construir la intensidad poco a poco. La cantidad necesaria depende del producto y del efecto que quieras."},
-  {q:"¿El maquillaje puede verse diferente según la iluminación?",answer:true,why:"¡Sí! La luz natural y la artificial pueden cambiar cómo percibimos los colores."},
-  {q:"¿Un tutorial de internet garantiza el mismo resultado en todo el mundo?",answer:false,why:"Los resultados varían según los productos, las técnicas, la iluminación y las preferencias personales."},
-  {q:"¿Es importante revisar la fecha de caducidad de los cosméticos?",answer:true,why:"Sí. Sigue las instrucciones de conservación y desecha productos que hayan cambiado o te provoquen irritación."},
-  {q:"¿Necesitas seguir todas las tendencias para maquillarte bien?",answer:false,why:"Las tendencias son inspiración, no reglas. Puedes elegir las que te gusten o crear algo distinto."}
-];
-
-let mythIndex = 0;
-let mythScore = 0;
-let mythAnswered = false;
-
-function showMyth() {
-  const myth = myths[mythIndex];
-  document.getElementById("myth-number").textContent =
-    "Pregunta " + (mythIndex + 1) + " de " + myths.length;
-  document.getElementById("myth-score").textContent = "Puntos: " + mythScore;
-  document.getElementById("myth-question").textContent = myth.q;
-  document.getElementById("myth-progress").style.width =
-    (mythIndex / myths.length * 100) + "%";
-  document.getElementById("myth-feedback").textContent = "";
-  document.getElementById("myth-answers").style.display = "block";
-  document.getElementById("myth-true").disabled = false;
-  document.getElementById("myth-false").disabled = false;
-  document.getElementById("myth-next").style.display = "none";
-  mythAnswered = false;
+let challengeIndex=0;
+function newChallenge(){
+  let n=Math.floor(Math.random()*challenges.length);
+  if(n===challengeIndex)n=(n+1)%challenges.length;
+  challengeIndex=n;
+  $("challengeTitle").textContent=challenges[n][0];
+  $("challengeText").textContent=challenges[n][1];
+  $("challengeStatus").textContent="";
 }
-
-function answerMyth(value) {
-  if (mythAnswered) return;
-  mythAnswered = true;
-  const myth = myths[mythIndex];
-  const correct = value === myth.answer;
-  if (correct) mythScore++;
-  document.getElementById("myth-score").textContent = "Puntos: " + mythScore;
-  document.getElementById("myth-feedback").textContent =
-    (correct ? "¡Correcto! ✨ " : "¡No exactamente! 💗 ") + myth.why;
-  document.getElementById("myth-true").disabled = true;
-  document.getElementById("myth-false").disabled = true;
-  document.getElementById("myth-next").style.display = "inline-block";
-  document.getElementById("myth-next").textContent =
-    mythIndex === myths.length - 1 ? "Ver resultado ♡" : "Siguiente pregunta →";
-  document.getElementById("myth-progress").style.width =
-    ((mythIndex + 1) / myths.length * 100) + "%";
+function completeChallenge(){
+  $("challengeStatus").textContent="¡Bien hecho! ✨ Cada práctica es una oportunidad para aprender.";
+  notify("¡Reto completado! 🎀");
 }
-
-document.getElementById("myth-true").addEventListener("click",() => answerMyth(true));
-document.getElementById("myth-false").addEventListener("click",() => answerMyth(false));
-
-document.getElementById("myth-next").addEventListener("click",function() {
-  if (mythIndex < myths.length - 1) {
-    mythIndex++;
-    showMyth();
-  } else {
-    document.getElementById("myth-question").textContent =
-      "¡Terminaste el reto! Tu resultado es " + mythScore + " de " + myths.length + ".";
-    document.getElementById("myth-answers").style.display = "none";
-    document.getElementById("myth-feedback").textContent =
-      mythScore === myths.length
-        ? "¡Puntuación perfecta! Eres una experta en mitos de maquillaje. 💗"
-        : "¡Gracias por jugar! Ahora conoces más datos de belleza. Puedes intentarlo otra vez.";
-    document.getElementById("myth-next").style.display = "none";
-    document.getElementById("myth-progress").style.width = "100%";
-  }
-});
-
-document.getElementById("myth-restart").addEventListener("click",function() {
-  mythIndex = 0;
-  mythScore = 0;
-  showMyth();
-});
-showMyth();
 </script>
 </body>
 </html>
